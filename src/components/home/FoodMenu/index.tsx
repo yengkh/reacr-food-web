@@ -6,7 +6,7 @@ type Props = {};
 
 const FoodMenu = (props: Props) => {
   return (
-    <section className="py-2 md:py-16">
+    <section className="py-5 md:pt-16">
       <motion.div
         initial="hidden"
         whileInView="visible"

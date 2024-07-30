@@ -12,6 +12,9 @@ export default {
       colors: {
         appBarBackgroundColor: "#89A3B2",
         appBarIconColor: "#FFDE4D",
+        itemBackgrondColor: "#EEEDEB",
+        priceColor: "#939185",
+        lineThroughtColor: "#EB3678",
       },
     },
   },

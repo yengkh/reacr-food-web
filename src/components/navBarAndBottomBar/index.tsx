@@ -68,7 +68,7 @@ const NavBarAndBottomBar = ({ setSelectedPage, selectedPage }: Props) => {
       </div>
       {/* BOTTOM */}
       {!ScreenSize && (
-        <div className="bg-appBarBackgroundColor py-4 flex justify-between px-10 fixed bottom-0 left-0 right-0 ">
+        <div className="bg-appBarBackgroundColor z-50 py-4 flex justify-between px-10 fixed bottom-0 left-0 right-0">
           <Link
             title="Home"
             iconData={faHouse}
