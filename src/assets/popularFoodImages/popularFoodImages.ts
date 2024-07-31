@@ -88,4 +88,21 @@ export const popularFoodImages: Array<PopularFoodItemsType> = [
     discount: 12,
     rating: 4,
   },
+  {
+    id: 11,
+    name: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut ducimus quis laborum porro nulla",
+    price: 10,
+    image:
+      "https://www.adorama.com/alc/wp-content/uploads/2018/05/PRANA7-825x465.jpg",
+    discount: 0,
+    rating: 4.5,
+  },
+  {
+    id: 12,
+    name: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut ducimus quis laborum porro nulla",
+    price: 12.9,
+    image: "https://img-c.udemycdn.com/course/480x270/5054364_b2fc.jpg",
+    discount: 30,
+    rating: 4,
+  },
 ];

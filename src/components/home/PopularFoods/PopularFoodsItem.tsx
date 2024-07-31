@@ -1,21 +1,37 @@
 import { popularFoodImages } from "@/assets/popularFoodImages/popularFoodImages";
-import FoodItems from "@/shared/FoodItems";
+import PopularFoodItems from "./PopularFoodItems";
+import { motion } from "framer-motion";
+
 type Props = {};
 
 const PopularFoodsItem = (props: Props) => {
   return (
-    <div className="mt-5 md:mt-10 flex w-full md:h-auto h-auto overflow-x-scroll overflow-y-hidden">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      variants={{
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: 0.2,
+          },
+        },
+      }}
+      className="mt-5 flex md:h-auto h-auto overflow-x-scroll overflow-y-hidden"
+    >
       {popularFoodImages.map((items) => (
-        <FoodItems
-          key={items.id}
-          foodDiscount={items.discount}
-          foodName={items.name}
-          foodPrice={items.price}
-          foodRatingStar={items.rating}
-          imageSource={items.image}
-        />
+        <div className="flex px-2 " key={items.id}>
+          <PopularFoodItems
+            image={items.image}
+            price={items.price}
+            discount={items.discount}
+            rating={items.rating}
+            name={items.name}
+          />
+        </div>
       ))}
-    </div>
+    </motion.div>
   );
 };
 

@@ -18,14 +18,14 @@ type Props = {
 const NavBarAndBottomBar = ({ setSelectedPage, selectedPage }: Props) => {
   const ScreenSize = useMediaQuery("(min-width: 600px)");
   return (
-    <nav className="w-full z-50">
+    <nav className="w-full ">
       {/* TOP */}
-      <div className="bg-appBarBackgroundColor py-3 md:py-5 flex fixed  top-0 right-0 left-0 justify-between px-14 text-white">
+      <div className="bg-appBarBackgroundColor z-50 py-3 md:py-5 flex fixed  top-0 right-0 left-0 justify-between px-14 text-white">
         <p className="w-1/4">Logo</p>
         {ScreenSize ? (
           <div className="flex justify-between items-center gap-4 w-full">
             <div className="flex justify-between w-full">
-              <div className="flex gap-14">
+              <div className="flex gap-14 md:gap-10">
                 <Link
                   title="Home"
                   page="Home"

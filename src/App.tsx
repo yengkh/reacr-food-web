@@ -2,6 +2,7 @@ import NavBarAndBottomBar from "./components/navBarAndBottomBar";
 import { useState } from "react";
 import { SelectedPage } from "./shared/types";
 import HomePage from "./components/home";
+import Footer from "./components/Footer";
 const App = () => {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(
     SelectedPage.Home
@@ -13,6 +14,7 @@ const App = () => {
         setSelectedPage={setSelectedPage}
       />
       <HomePage />
+      <Footer />
     </div>
   );
 };

@@ -1,12 +1,12 @@
 import TitleText from "@/shared/TitleText";
 import { motion } from "framer-motion";
-import FoodMenuItemsCarousel from "./FoodMenuItemsCarousel";
+import FoodItem from "./FoodItem";
 
 type Props = {};
 
-const FoodMenu = (props: Props) => {
+const ProductItems = (props: Props) => {
   return (
-    <section className="mt-8">
+    <section className="mb-8 mt-8">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -23,12 +23,11 @@ const FoodMenu = (props: Props) => {
           },
         }}
       >
-        <TitleText title="All FOODS MENU" />
-        <p>All the foods you need are here </p>
+        <TitleText title={"FIND YOUR FAVORITE FOODS"} />
       </motion.div>
-      <FoodMenuItemsCarousel />
+      <FoodItem />
     </section>
   );
 };
 
-export default FoodMenu;
+export default ProductItems;

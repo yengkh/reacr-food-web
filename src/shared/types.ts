@@ -13,3 +13,10 @@ export interface PopularFoodItemsType {
   discount: number;
   rating: number;
 }
+
+export interface HomePageViewInfor {
+  id: number;
+  image: string;
+  description: string;
+  title: string;
+}

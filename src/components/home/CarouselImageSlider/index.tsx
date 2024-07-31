@@ -4,7 +4,7 @@ const CarouselSlider = () => {
   return (
     <section
       id="default-carousel"
-      className="relative md:w-5/6 rounded-md md:mx-auto"
+      className="relative rounded-md md:mx-auto"
       data-carousel="slide"
     >
       {/* <!-- Carousel wrapper --> */}

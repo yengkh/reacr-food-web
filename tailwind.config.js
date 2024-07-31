@@ -18,5 +18,18 @@ export default {
       },
     },
   },
-  plugins: [flowbitePlugin],
+  plugins: [
+    flowbitePlugin,
+    function ({ addUtilities }) {
+      addUtilities({
+        ".line-clamp-4": {
+          overflow: "hidden",
+          display: "-webkit-box",
+          "-webkit-box-orient": "vertical",
+          "-webkit-line-clamp": "3",
+          // height: "5.25em", // Adjust based on your line height
+        },
+      });
+    },
+  ],
 };

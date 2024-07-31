@@ -5,9 +5,9 @@ type Props = {};
 
 const PopularFoods = (props: Props) => {
   return (
-    <section className="pt-2 md:pt-8 pb-20">
+    <section className="pt-2 mt-8">
       <div>
-        <TitleTextWithSeeMore title="Popular Foods" />
+        <TitleTextWithSeeMore title="POPULAR FOODS" />
         <p>This are all our popular foods</p>
       </div>
       <PopularFoodsItem />
