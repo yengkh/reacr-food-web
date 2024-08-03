@@ -15,6 +15,7 @@ export default {
         itemBackgrondColor: "#EEEDEB",
         priceColor: "#939185",
         lineThroughtColor: "#EB3678",
+        activeLinkColor: "#E90074",
       },
     },
   },

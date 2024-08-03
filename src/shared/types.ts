@@ -1,8 +1,9 @@
 export enum SelectedPage {
-  Home = "home",
-  Favorite = "favorite",
-  Cart = "cart",
-  Profile = "profile",
+  Home = "Home",
+  Favorite = "Favorite",
+  Cart = "Cart",
+  Profile = "Profile",
+  Seeting = "Setting",
 }
 
 export interface PopularFoodItemsType {

@@ -1,9 +1,7 @@
 import { homePageViewInfor } from "@/assets/homePageViewInfor/homePageViewInfor";
 import { motion } from "framer-motion";
 
-type Props = {};
-
-const HomeViewInfor = (props: Props) => {
+const HomeViewInfor = () => {
   return (
     <section className="mt-10">
       {homePageViewInfor.map((items) => (
@@ -38,7 +36,7 @@ const HomeViewInfor = (props: Props) => {
             variants={{
               hidden: {
                 opacity: 0,
-                x: 50,
+                x: -50,
               },
               visible: {
                 opacity: 1,

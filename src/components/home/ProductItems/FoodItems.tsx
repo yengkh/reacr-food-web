@@ -1,6 +1,6 @@
 import Rating from "@/components/home/PopularFoods/RatingStar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Quantity from "./Quantity";
@@ -31,7 +31,9 @@ const FoodItems = ({
       <div className="w-auto whitespace-nowrap cursor-pointer">
         <div className="relative text-[12px] w-auto md:text-sm lg:text-[14px] xl:text-[16px] h-auto flex flex-col whitespace-normal bg-itemBackgrondColor rounded-md">
           <div className="flex justify-center items-center absolute w-7 h-7 right-3 top-2 bg-lineThroughtColor p-1 rounded-full text-white">
-            <FontAwesomeIcon icon={faHeart} />
+            <button type="button">
+              <FontAwesomeIcon icon={faHeart} />
+            </button>
           </div>
           <button
             onClick={() => setSeeQuantity(true)}
@@ -45,10 +47,7 @@ const FoodItems = ({
             alt=""
             className="rounded-md h-36 md:h-44 bg-cover bg-no-repeat"
           />
-          <Quantity
-            seeQuantity={seeQuantity}
-            setSeeQuantity={() => setSeeQuantity(true)}
-          />
+          <Quantity seeQuantity={seeQuantity} />
           <div className="p-2">
             <p className="flex justify-between font-bold">
               <span className="text-priceColor">
