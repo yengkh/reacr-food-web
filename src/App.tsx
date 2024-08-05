@@ -17,6 +17,7 @@ import Cart from "./components/Cart";
 import useMediaQuery from "./hook/useMediaQuery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Profile from "./components/Profile";
+import DetailPage from "./components/detailPage";
 const App = () => {
   const [selectePage, setSelectedpage] = useState<SelectedPage>(
     SelectedPage.Home
@@ -164,6 +165,7 @@ const App = () => {
           <Route path="favorite" element={<Favorite />} />
           <Route path="cart" element={<Cart />} />
           <Route path="login" element={<Profile />} />
+          <Route path="/:foodName" element={<DetailPage />} />
         </Routes>
       </Router>
       {ScreenSize ? (

@@ -2,9 +2,7 @@ import TitleText from "@/shared/TitleText";
 import { motion } from "framer-motion";
 import FoodMenuItemsCarousel from "./FoodMenuItemsCarousel";
 
-type Props = {};
-
-const FoodMenu = (props: Props) => {
+const FoodMenu = () => {
   return (
     <section className="mt-8">
       <motion.div

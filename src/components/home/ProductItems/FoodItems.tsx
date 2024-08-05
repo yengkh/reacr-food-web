@@ -4,6 +4,9 @@ import { faHeart, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Quantity from "./Quantity";
+import { useDispatch } from "react-redux";
+import { addFoodToCart } from "@/Redux-Cart/AddToCart";
+import { Link } from "react-router-dom";
 
 type Props = {
   imageSource: string;
@@ -25,6 +28,16 @@ const FoodItems = ({
     visible: { opacity: 1, scale: 1 },
   };
   const [seeQuantity, setSeeQuantity] = useState<boolean>(false);
+  const dispatch = useDispatch();
+  function handleAddToCart() {
+    setSeeQuantity(false);
+    dispatch(
+      addFoodToCart({
+        name: foodName,
+        price: foodPrice,
+      })
+    );
+  }
 
   return (
     <motion.div variants={childVariant}>
@@ -42,42 +55,45 @@ const FoodItems = ({
           >
             <FontAwesomeIcon icon={faPlus} style={{ fontSize: "18px" }} />
           </button>
-          <img
-            src={imageSource}
-            alt=""
-            className="rounded-md h-36 md:h-44 bg-cover bg-no-repeat"
-          />
           <Quantity seeQuantity={seeQuantity} />
-          <div className="p-2">
-            <p className="flex justify-between font-bold">
-              <span className="text-priceColor">
-                <span
-                  className={`${
-                    foodDiscount !== 0
-                      ? "line-through decoration-lineThroughtColor"
-                      : ""
-                  }`}
-                >
-                  ${foodPrice}
+          <Link to={foodName}>
+            <img
+              src={imageSource}
+              alt=""
+              className="rounded-md h-36 md:h-44 bg-cover bg-no-repeat"
+            />
+
+            <div className="p-2">
+              <p className="flex justify-between font-bold">
+                <span className="text-priceColor">
+                  <span
+                    className={`${
+                      foodDiscount !== 0
+                        ? "line-through decoration-lineThroughtColor"
+                        : ""
+                    }`}
+                  >
+                    ${foodPrice}
+                  </span>
+                  <span className="ml-2">
+                    {foodDiscount !== 0
+                      ? `$${(
+                          foodPrice -
+                          (foodPrice * foodDiscount) / 100
+                        ).toFixed(2)}`
+                      : ""}
+                  </span>
                 </span>
-                <span className="ml-2">
-                  {foodDiscount !== 0
-                    ? `$${(
-                        foodPrice -
-                        (foodPrice * foodDiscount) / 100
-                      ).toFixed(2)}`
-                    : ""}
-                </span>
-              </span>
-              <span>{foodDiscount === 0 ? "" : `${foodDiscount}% Off`}</span>
-            </p>
-            <Rating rating={foodRatingStar} />
-            <p className="mt-2 hover:underline line-clamp-4">{foodName}</p>
-          </div>
+                <span>{foodDiscount === 0 ? "" : `${foodDiscount}% Off`}</span>
+              </p>
+              <Rating rating={foodRatingStar} />
+              <p className="mt-2 hover:underline line-clamp-4">{foodName}</p>
+            </div>
+          </Link>
           <button
             type="button"
             className="bg-appBarBackgroundColor py-2 mt-2 mb-5 mx-4 rounded-md font-bold"
-            onClick={() => setSeeQuantity(false)}
+            onClick={handleAddToCart}
           >
             Add To Card
           </button>

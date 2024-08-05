@@ -20,18 +20,16 @@ const Quantity = ({ seeQuantity }: Props) => {
   }
 
   return (
-    <div className={`${seeQuantity === true ? "" : "hidden"}`}>
-      <div>
-        <button
-          onClick={removeQuntity}
-          type="button"
-          className="absolute right-20 w-7 h-7 top-[110px] rounded-md flex justify-center items-center bg-white md:top-[140px]"
-        >
-          <FontAwesomeIcon icon={faMinus} style={{ fontSize: "18px" }} />
-        </button>
-        <div className="absolute right-[44px] w-8 h-7 top-[110px] rounded-md flex justify-center items-center bg-white md:top-[140px]">
-          <p className="text-[16px]">{quantity}</p>
-        </div>
+    <div className={`${seeQuantity === true ? "" : "hidden"} `}>
+      <button
+        onClick={removeQuntity}
+        type="button"
+        className="absolute right-20 w-7 h-7 top-[110px] rounded-md flex justify-center items-center bg-white md:top-[140px]"
+      >
+        <FontAwesomeIcon icon={faMinus} style={{ fontSize: "18px" }} />
+      </button>
+      <div className="absolute right-[44px] w-8 h-7 top-[110px] rounded-md flex justify-center items-center bg-white md:top-[140px]">
+        <p className="text-[16px]">{quantity}</p>
       </div>
       <button
         type="button"

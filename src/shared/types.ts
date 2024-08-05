@@ -7,7 +7,7 @@ export enum SelectedPage {
 }
 
 export interface PopularFoodItemsType {
-  id: number;
+  id: number | string;
   name: string;
   image: string;
   price: number;
