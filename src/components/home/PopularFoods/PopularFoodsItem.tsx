@@ -2,9 +2,7 @@ import { popularFoodImages } from "@/assets/popularFoodImages/popularFoodImages"
 import PopularFoodItems from "./PopularFoodItems";
 import { motion } from "framer-motion";
 
-type Props = {};
-
-const PopularFoodsItem = (props: Props) => {
+const PopularFoodsItem = () => {
   return (
     <motion.div
       initial="hidden"

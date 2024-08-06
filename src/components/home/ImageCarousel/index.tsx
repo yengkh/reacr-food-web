@@ -30,7 +30,7 @@ const ImageCarousel = () => {
             key={items.id}
             className={
               slide === index
-                ? "h-full xl:w-[90%] w-5/6 rounded-md"
+                ? "h-full xl:w-[90%] w-5/6 rounded-md object-cover"
                 : "h-full xl:w-[90%] w-5/6 hidden"
             }
           />

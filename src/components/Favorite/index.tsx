@@ -1,6 +1,4 @@
-type Props = {};
-
-const Favorite = (props: Props) => {
+const Favorite = () => {
   return <div className="mt-20">Favorite</div>;
 };
 

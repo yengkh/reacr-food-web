@@ -18,6 +18,8 @@ import useMediaQuery from "./hook/useMediaQuery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Profile from "./components/Profile";
 import DetailPage from "./components/detailPage";
+import FoodMenuDetail from "./components/foodMenuDetail";
+import MenuErrorPage from "./components/errors/MenuErrorPage";
 const App = () => {
   const [selectePage, setSelectedpage] = useState<SelectedPage>(
     SelectedPage.Home
@@ -33,7 +35,7 @@ const App = () => {
     setMenu(!menu);
   }
   return (
-    <div className="relative">
+    <div>
       <Router>
         <div className="w-full bg-appBarBackgroundColor fixed top-0 left-0 right-0 z-50">
           <div className="flex w-5/6 mx-auto py-5 justify-between items-center">
@@ -165,7 +167,9 @@ const App = () => {
           <Route path="favorite" element={<Favorite />} />
           <Route path="cart" element={<Cart />} />
           <Route path="login" element={<Profile />} />
-          <Route path="/:foodName" element={<DetailPage />} />
+          <Route path="/view-food-detail/:foodName" element={<DetailPage />} />
+          <Route path="/food-menu/:foodMenuName" element={<FoodMenuDetail />} />
+          <Route path="/page-not-found" element={<MenuErrorPage />} />
         </Routes>
       </Router>
       {ScreenSize ? (

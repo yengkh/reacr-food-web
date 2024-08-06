@@ -2,9 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShop, faTruck } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
-type Props = {};
-
-const OurServies = (props: Props) => {
+const OurServies = () => {
   return (
     <section className=" mx-auto gap-6 md:flex justify-between mt-10 mb-20">
       <motion.div

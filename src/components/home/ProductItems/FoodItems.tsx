@@ -51,16 +51,16 @@ const FoodItems = ({
           <button
             onClick={() => setSeeQuantity(true)}
             type="button"
-            className={`absolute right-3 w-7 h-7 top-[110px] rounded-md flex justify-center items-center bg-white md:top-[140px]`}
+            className={`absolute right-3 w-6 h-6 top-[110px] rounded-md flex justify-center items-center bg-white md:top-[140px]`}
           >
-            <FontAwesomeIcon icon={faPlus} style={{ fontSize: "18px" }} />
+            <FontAwesomeIcon icon={faPlus} style={{ fontSize: "14px" }} />
           </button>
           <Quantity seeQuantity={seeQuantity} />
-          <Link to={foodName}>
+          <Link to={`/view-food-detail/${encodeURIComponent(foodName)}`}>
             <img
               src={imageSource}
               alt=""
-              className="rounded-md h-36 md:h-44 bg-cover bg-no-repeat"
+              className="rounded-md h-36 md:h-44 bg-cover object-cover w-full"
             />
 
             <div className="p-2">

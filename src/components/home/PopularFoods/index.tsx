@@ -1,9 +1,7 @@
 import TitleTextWithSeeMore from "@/shared/TitleTextWithSeeMore";
 import PopularFoodsItem from "./PopularFoodsItem";
 
-type Props = {};
-
-const PopularFoods = (props: Props) => {
+const PopularFoods = () => {
   return (
     <section className="pt-2 mt-8">
       <div>

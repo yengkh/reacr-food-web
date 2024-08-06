@@ -1,6 +1,4 @@
-type Props = {};
-
-const Profile = (props: Props) => {
+const Profile = () => {
   return <div className="mt-20">Profile</div>;
 };
 

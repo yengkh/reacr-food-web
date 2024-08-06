@@ -13,6 +13,7 @@ export interface PopularFoodItemsType {
   price: number;
   discount: number;
   rating: number;
+  type: string;
 }
 
 export interface HomePageViewInfor {
@@ -20,4 +21,10 @@ export interface HomePageViewInfor {
   image: string;
   description: string;
   title: string;
+}
+
+export interface FoodMenuType {
+  id: number;
+  image: string;
+  name: string;
 }
