@@ -43,11 +43,11 @@ const PopularFoodItems = ({ image, price, discount, name, rating }: Props) => {
           <FontAwesomeIcon icon={faPlus} style={{ fontSize: "14px" }} />
         </button>
         <Quantity seeQuantity={seeQuantity} />
-        <Link to={name}>
+        <Link to={`/view-food-detail/${encodeURIComponent(name)}`}>
           <img
             src={image}
             alt=""
-            className="rounded-md h-36 md:h-44 object-cover"
+            className="rounded-md h-36 md:h-44 object-cover w-full"
           />
           <div className="p-2">
             <p className="flex justify-between font-bold">
