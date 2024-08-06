@@ -1,11 +1,22 @@
 import { PopularFoodItemsType } from "@/shared/types";
+import img1 from "./img1.webp";
+import img2 from "./img2.jpg";
+import img3 from "./img3.jpg";
+import img4 from "./img4.jpg";
+import img5 from "./img5.jfif";
+import img6 from "./img6.jpg";
+import img7 from "./img7.jpg";
+import img8 from "./img8.webp";
+import img9 from "./img9.jfif";
+import img10 from "./img10.jpg";
+import img11 from "./img11.jpg";
+import img12 from "./img12.jpg";
 export const popularFoodImages: Array<PopularFoodItemsType> = [
   {
     id: 1,
     name: "Lorem ipsum dolor sit amet consectetur adipisicing elit Ut ducimus quis laborum porro nulla1",
     price: 12.2,
-    image:
-      "https://www.miops.com/cdn/shop/articles/Food_Photography___How_to_Take_Unique_and_Creative_Food_Photos_5.jpg?v=1661150733",
+    image: img1,
     discount: 0,
     rating: 5,
     type: "A",
@@ -14,8 +25,7 @@ export const popularFoodImages: Array<PopularFoodItemsType> = [
     id: 2,
     name: "Lorem ipsum dolor sit amet consectetur adipisicing elit Ut ducimus quis laborum porro nulla2",
     price: 10,
-    image:
-      "https://www.adorama.com/alc/wp-content/uploads/2018/05/PRANA7-825x465.jpg",
+    image: img2,
     discount: 0,
     rating: 4.5,
     type: "B",
@@ -24,7 +34,7 @@ export const popularFoodImages: Array<PopularFoodItemsType> = [
     id: 3,
     name: "Lorem ipsum dolor sit amet consectetur adipisicing elit Ut ducimus quis laborum porro nulla3",
     price: 12.9,
-    image: "https://img-c.udemycdn.com/course/480x270/5054364_b2fc.jpg",
+    image: img3,
     discount: 12,
     rating: 4,
     type: "C",
@@ -33,8 +43,7 @@ export const popularFoodImages: Array<PopularFoodItemsType> = [
     id: 4,
     name: "Lorem ipsum dolor sit amet consectetur adipisicing elit Ut ducimus quis laborum porro nulla4",
     price: 9.9,
-    image:
-      "https://images.squarespace-cdn.com/content/v1/5705c778d210b8bf599d454c/1584232784066-JN70D7ZRD0NU5QZNT18W/Cook_and_Waiter-20big.jpg",
+    image: img4,
     discount: 0,
     rating: 4,
     type: "A",
@@ -43,8 +52,7 @@ export const popularFoodImages: Array<PopularFoodItemsType> = [
     id: 5,
     name: "Lorem ipsum dolor sit amet consectetur adipisicing elit Ut ducimus quis laborum porro nulla5",
     price: 15.5,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ_3SAZ-WPdricPuoXHg-o2PaeL_f5HXVWVzEuTbJNj9wmFCf3tGFsLTi-NGdyHQVSV80&usqp=CAU",
+    image: img5,
     discount: 0,
     rating: 5,
     type: "A",
@@ -53,8 +61,7 @@ export const popularFoodImages: Array<PopularFoodItemsType> = [
     id: 6,
     name: "Lorem ipsum dolor sit amet consectetur adipisicing elit Ut ducimus quis laborum porro nulla6",
     price: 9.9,
-    image:
-      "https://images.squarespace-cdn.com/content/v1/5705c778d210b8bf599d454c/1584232784066-JN70D7ZRD0NU5QZNT18W/Cook_and_Waiter-20big.jpg",
+    image: img6,
     discount: 0,
     rating: 4,
     type: "C",
@@ -63,8 +70,7 @@ export const popularFoodImages: Array<PopularFoodItemsType> = [
     id: 7,
     name: "Lorem ipsum dolor sit amet consectetur adipisicing elit Ut ducimus quis laborum porro nulla7",
     price: 10,
-    image:
-      "https://www.adorama.com/alc/wp-content/uploads/2018/05/PRANA7-825x465.jpg",
+    image: img7,
     discount: 0,
     rating: 4.5,
     type: "B",
@@ -73,8 +79,7 @@ export const popularFoodImages: Array<PopularFoodItemsType> = [
     id: 8,
     name: "Lorem ipsum dolor sit amet consectetur adipisicing elit Ut ducimus quis laborum porro nulla8",
     price: 12.2,
-    image:
-      "https://www.miops.com/cdn/shop/articles/Food_Photography___How_to_Take_Unique_and_Creative_Food_Photos_5.jpg?v=1661150733",
+    image: img8,
     discount: 0,
     rating: 5,
     type: "C",
@@ -83,8 +88,7 @@ export const popularFoodImages: Array<PopularFoodItemsType> = [
     id: 9,
     name: "Lorem ipsum dolor sit amet consectetur adipisicing elit Ut ducimus quis laborum porro nulla9",
     price: 15.5,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ_3SAZ-WPdricPuoXHg-o2PaeL_f5HXVWVzEuTbJNj9wmFCf3tGFsLTi-NGdyHQVSV80&usqp=CAU",
+    image: img9,
     discount: 0,
     rating: 5,
     type: "A",
@@ -93,7 +97,7 @@ export const popularFoodImages: Array<PopularFoodItemsType> = [
     id: 10,
     name: "Lorem ipsum dolor sit amet consectetur adipisicing elit Ut ducimus quis laborum porro nulla10",
     price: 12.9,
-    image: "https://img-c.udemycdn.com/course/480x270/5054364_b2fc.jpg",
+    image: img10,
     discount: 12,
     rating: 4,
     type: "B",
@@ -102,8 +106,7 @@ export const popularFoodImages: Array<PopularFoodItemsType> = [
     id: 11,
     name: "Lorem ipsum dolor sit amet consectetur adipisicing elit Ut ducimus quis laborum porro nulla11",
     price: 10,
-    image:
-      "https://www.adorama.com/alc/wp-content/uploads/2018/05/PRANA7-825x465.jpg",
+    image: img11,
     discount: 0,
     rating: 4.5,
     type: "B",
@@ -112,7 +115,7 @@ export const popularFoodImages: Array<PopularFoodItemsType> = [
     id: 12,
     name: "Lorem ipsum dolor sit amet consectetur adipisicing elit Ut ducimus quis laborum porro nulla12",
     price: 12.9,
-    image: "https://img-c.udemycdn.com/course/480x270/5054364_b2fc.jpg",
+    image: img12,
     discount: 30,
     rating: 4,
     type: "A",
