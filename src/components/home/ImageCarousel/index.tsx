@@ -16,10 +16,10 @@ const ImageCarousel = () => {
     setSlide(slide === 0 ? imageCarouselData.length - 1 : slide - 1);
   };
   return (
-    <div className="lg:w-[90%] mx-auto flex justify-center items-center h-44 md:h-80 lg:h-96 xl:h-[480px] relative">
+    <div className="lg:w-[90%] mx-2 flex justify-center items-center h-44 md:h-80 lg:h-96 xl:h-[480px] relative">
       <FontAwesomeIcon
         icon={faChevronLeft}
-        className="absolute text-white w-2 h-2 md:w-5 md:h-5 lg:w-6 lg:h-6 left-1 bg-appBarBackgroundColor p-2 rounded-full cursor-pointer"
+        className="absolute text-white w-3 h-3 md:w-5 md:h-5 lg:w-6 lg:h-6 left-1 bg-appBarBackgroundColor p-3 rounded-full cursor-pointer"
         onClick={previoseSlide}
       />
       {imageCarouselData.map((items, index) => {
@@ -30,15 +30,15 @@ const ImageCarousel = () => {
             key={items.id}
             className={
               slide === index
-                ? "h-full xl:w-[90%] w-5/6 rounded-md object-cover"
-                : "h-full xl:w-[90%] w-5/6 hidden"
+                ? "h-full w-full rounded-md object-cover"
+                : "h-full w-full hidden"
             }
           />
         );
       })}
       <FontAwesomeIcon
         icon={faChevronRight}
-        className="absolute  md:w-5 md:h-5 h-2 w-2 lg:w-6 lg:h-6 right-1 bg-appBarBackgroundColor p-2 text-white rounded-full cursor-pointer"
+        className="absolute  md:w-5 md:h-5 h-3 w-3 lg:w-6 lg:h-6 right-1 bg-appBarBackgroundColor p-3 text-white rounded-full cursor-pointer"
         onClick={nextSlide}
       />
       <span className="absolute flex bottom-5 gap-2">

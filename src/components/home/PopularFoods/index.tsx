@@ -6,7 +6,7 @@ const PopularFoods = () => {
     <section className="pt-2 mt-8">
       <div>
         <TitleTextWithSeeMore title="POPULAR FOODS" />
-        <p>This are all our popular foods</p>
+        <p className="mx-2">This are all our popular foods</p>
       </div>
       <PopularFoodsItem />
     </section>

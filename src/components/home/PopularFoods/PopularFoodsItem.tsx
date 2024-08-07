@@ -26,6 +26,7 @@ const PopularFoodsItem = () => {
             discount={items.discount}
             rating={items.rating}
             name={items.name}
+            id={items.id}
           />
         </div>
       ))}

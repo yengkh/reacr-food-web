@@ -21,7 +21,7 @@ const FoodItem = () => {
           viewport={{ once: true, amount: 0.5 }}
           variants={container}
           key={items.id}
-          className="mb-10 flex px-2 mx-auto"
+          className="mb-10 flex px-1 md:px-3 mx-auto"
         >
           <FoodItems
             imageSource={items.image}
@@ -29,6 +29,7 @@ const FoodItem = () => {
             foodPrice={items.price}
             foodName={items.name}
             foodRatingStar={items.rating}
+            id={items.id}
           />
         </motion.div>
       ))}

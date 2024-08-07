@@ -22,7 +22,7 @@ const FoodMenu = () => {
         }}
       >
         <TitleText title="All FOODS MENU" />
-        <p>All the foods you need are here </p>
+        <p className="mx-2">All the foods you need are here </p>
       </motion.div>
       <FoodMenuItemsCarousel />
     </section>

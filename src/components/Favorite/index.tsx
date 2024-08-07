@@ -1,5 +1,5 @@
 const Favorite = () => {
-  return <div className="mt-20">Favorite</div>;
+  return <div className="py-20">Favorite</div>;
 };
 
 export default Favorite;

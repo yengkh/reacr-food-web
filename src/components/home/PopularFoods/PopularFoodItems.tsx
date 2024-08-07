@@ -5,6 +5,10 @@ import { motion } from "framer-motion";
 import Quantity from "../ProductItems/Quantity";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { addFoodToCart } from "@/Redux-Cart/AddToCart";
+import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type Props = {
   image: string;
@@ -12,9 +16,17 @@ type Props = {
   discount: number;
   rating: number;
   name: string;
+  id: number;
 };
 
-const PopularFoodItems = ({ image, price, discount, name, rating }: Props) => {
+const PopularFoodItems = ({
+  image,
+  price,
+  discount,
+  name,
+  rating,
+  id,
+}: Props) => {
   const childVariant = {
     hidden: {
       opacity: 0,
@@ -26,6 +38,38 @@ const PopularFoodItems = ({ image, price, discount, name, rating }: Props) => {
     },
   };
   const [seeQuantity, setSeeQuantity] = useState<boolean>(false);
+  const [quantity, setQuantity] = useState(1);
+
+  const dispatch = useDispatch();
+  function handleAddToCart() {
+    dispatch(
+      addFoodToCart({
+        name: name,
+        price: price - (price * discount) / 100,
+        quantity: quantity,
+        image: image,
+        id: id,
+      })
+    );
+    toast.success(
+      `${
+        quantity > 1
+          ? "Foods added to cart successfully!"
+          : "Food added to cart successfully!"
+      }`
+    );
+    // setSeeQuantity(false);
+  }
+
+  function showQuntityOption() {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  }
+
+  function removeQuntity() {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  }
   return (
     <motion.div
       variants={childVariant}
@@ -42,7 +86,12 @@ const PopularFoodItems = ({ image, price, discount, name, rating }: Props) => {
         >
           <FontAwesomeIcon icon={faPlus} style={{ fontSize: "14px" }} />
         </button>
-        <Quantity seeQuantity={seeQuantity} />
+        <Quantity
+          seeQuantity={seeQuantity}
+          quantity={quantity}
+          removeQuntity={removeQuntity}
+          showQuntityOption={showQuntityOption}
+        />
         <Link to={`/view-food-detail/${encodeURIComponent(name)}`}>
           <img
             src={image}
@@ -59,11 +108,14 @@ const PopularFoodItems = ({ image, price, discount, name, rating }: Props) => {
                       : ""
                   }`}
                 >
-                  ${price}
+                  ${(price * quantity).toFixed(2)}
                 </span>
                 <span className="ml-2">
                   {discount !== 0
-                    ? `$${(price - (price * discount) / 100).toFixed(2)}`
+                    ? `$${(
+                        (price - (price * discount) / 100) *
+                        quantity
+                      ).toFixed(2)}`
                     : ""}
                 </span>
               </span>
@@ -76,10 +128,11 @@ const PopularFoodItems = ({ image, price, discount, name, rating }: Props) => {
         <button
           type="button"
           className="bg-appBarBackgroundColor py-2 mt-2 mb-5 mx-4 rounded-md font-bold"
-          onClick={() => setSeeQuantity(false)}
+          onClick={handleAddToCart}
         >
           Add To Card
         </button>
+        <ToastContainer />
       </div>
     </motion.div>
   );

@@ -7,7 +7,7 @@ const FoodMenuItemsCarousel = () => {
       {foodMenuItems.map((items, index) => (
         <div key={items.id} className="w-auto whitespace-nowrap ">
           <Link to={`/food-menu/${encodeURIComponent(items.name)}`}>
-            <div className="flex flex-col mx-4 w-56 gap-1 md:gap-2">
+            <div className="flex flex-col mx-2 w-56 gap-1 md:gap-2">
               <img
                 className="rounded-md object-cover h-40"
                 src={items.image}

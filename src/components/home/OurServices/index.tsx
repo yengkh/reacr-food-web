@@ -20,7 +20,7 @@ const OurServies = () => {
             x: 0,
           },
         }}
-        className="flex gap-4 md:w-1/2 py-12 bg-appBarBackgroundColor text-white px-2 mb-10 md:mb-0 rounded-md"
+        className="flex gap-4 md:w-1/2 py-8 bg-appBarBackgroundColor text-white px-2 mb-10 md:mb-0 rounded-md"
       >
         <FontAwesomeIcon icon={faTruck} style={{ fontSize: "40px" }} />
         <p>Free Delivery If Speend More Then 20$</p>
@@ -40,7 +40,7 @@ const OurServies = () => {
             x: 0,
           },
         }}
-        className="flex gap-4 md:w-1/2 py-12 bg-appBarBackgroundColor text-white px-2 rounded-md"
+        className="flex gap-4 md:w-1/2 py-8 bg-appBarBackgroundColor text-white px-2 rounded-md"
       >
         <FontAwesomeIcon icon={faShop} style={{ fontSize: "40px" }} />
         <p>Our Resterant Open 7 days a week from 7am to 10pm</p>

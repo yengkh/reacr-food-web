@@ -7,6 +7,8 @@ import Quantity from "./Quantity";
 import { useDispatch } from "react-redux";
 import { addFoodToCart } from "@/Redux-Cart/AddToCart";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type Props = {
   imageSource: string;
@@ -14,6 +16,7 @@ type Props = {
   foodPrice: number;
   foodName: string;
   foodRatingStar: number;
+  id: number;
 };
 
 const FoodItems = ({
@@ -22,21 +25,45 @@ const FoodItems = ({
   foodDiscount,
   foodPrice,
   foodName,
+  id,
 }: Props) => {
   const childVariant = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: { opacity: 1, scale: 1 },
   };
   const [seeQuantity, setSeeQuantity] = useState<boolean>(false);
+
   const dispatch = useDispatch();
   function handleAddToCart() {
-    setSeeQuantity(false);
+    //setSeeQuantity(false);
     dispatch(
       addFoodToCart({
         name: foodName,
-        price: foodPrice,
+        price: foodPrice - (foodPrice * foodDiscount) / 100,
+        quantity: quantity,
+        image: imageSource,
+        id: id,
       })
     );
+    toast.success(
+      `${
+        quantity > 1
+          ? "Foods added to cart successfully!"
+          : "Food added to cart successfully!"
+      }`
+    );
+  }
+
+  const [quantity, setQuantity] = useState(1);
+
+  function showQuntityOption() {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  }
+
+  function removeQuntity() {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
   }
 
   return (
@@ -55,7 +82,12 @@ const FoodItems = ({
           >
             <FontAwesomeIcon icon={faPlus} style={{ fontSize: "14px" }} />
           </button>
-          <Quantity seeQuantity={seeQuantity} />
+          <Quantity
+            seeQuantity={seeQuantity}
+            quantity={quantity}
+            removeQuntity={removeQuntity}
+            showQuntityOption={showQuntityOption}
+          />
           <Link to={`/view-food-detail/${encodeURIComponent(foodName)}`}>
             <img
               src={imageSource}
@@ -73,13 +105,13 @@ const FoodItems = ({
                         : ""
                     }`}
                   >
-                    ${foodPrice}
+                    ${(foodPrice * quantity).toFixed(2)}
                   </span>
                   <span className="ml-2">
                     {foodDiscount !== 0
                       ? `$${(
-                          foodPrice -
-                          (foodPrice * foodDiscount) / 100
+                          (foodPrice - (foodPrice * foodDiscount) / 100) *
+                          quantity
                         ).toFixed(2)}`
                       : ""}
                   </span>
@@ -97,6 +129,7 @@ const FoodItems = ({
           >
             Add To Card
           </button>
+          <ToastContainer />
         </div>
       </div>
     </motion.div>

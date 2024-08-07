@@ -8,11 +8,16 @@ import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import TitleTextWithSeeMore from "@/shared/TitleTextWithSeeMore";
 import CommentPath from "./CommentPath";
 import PopularFoods from "../home/PopularFoods";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import { addFoodToCart } from "@/Redux-Cart/AddToCart";
 
 const DetailPage = () => {
   const { foodName } = useParams<{ foodName: string }>();
   const [detail, setDetail] = useState<Array<PopularFoodItemsType>>([]);
   const [quantity, setQuntity] = useState(1);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
     if (foodName) {
@@ -32,6 +37,31 @@ const DetailPage = () => {
     return <div className="flex justify-center items-center">Loading...</div>;
   }
 
+  const handleAddFoodToCart = (
+    name: string,
+    price: number,
+    discount: number,
+    image: string,
+    id: number
+  ) => {
+    dispatch(
+      addFoodToCart({
+        name: name,
+        price: price - (price * discount) / 100,
+        quantity: quantity,
+        image: image,
+        id: id,
+      })
+    );
+    toast.success(
+      `${
+        quantity > 1
+          ? "Foods added to cart successfully!"
+          : "Food added to cart successfully!"
+      }`
+    );
+  };
+
   return (
     <div className="py-20 w-5/6 mx-auto">
       {detail.map((item) => (
@@ -47,7 +77,28 @@ const DetailPage = () => {
           />
           <div className="flex flex-col gap-3">
             <p>Name: {item.name}</p>
-            <p>Price : ${item.price}</p>
+            <p className="flex justify-between font-bold w-48">
+              <span className="text-priceColor">
+                <span
+                  className={`${
+                    item.discount !== 0
+                      ? "line-through decoration-lineThroughtColor"
+                      : ""
+                  }`}
+                >
+                  ${(item.price * quantity).toFixed(2)}
+                </span>
+                <span className="ml-2">
+                  {item.discount !== 0
+                    ? `$${(
+                        (item.price - (item.price * item.discount) / 100) *
+                        quantity
+                      ).toFixed(2)}`
+                    : ""}
+                </span>
+              </span>
+              <span>{item.discount === 0 ? "" : `${item.discount}% Off`}</span>
+            </p>
             <Rating rating={item.rating} />
             <div className="flex gap-10 items-center px-2">
               <p className="text-lg">{quantity}</p>
@@ -88,6 +139,15 @@ const DetailPage = () => {
               <button
                 type="button"
                 className="btn bg-appBarBackgroundColor py-2 px-3 rounded-md font-bold text-sm"
+                onClick={() =>
+                  handleAddFoodToCart(
+                    item.name,
+                    item.price,
+                    item.discount,
+                    item.image,
+                    item.id
+                  )
+                }
               >
                 {" "}
                 Add To Cart{" "}
@@ -110,6 +170,7 @@ const DetailPage = () => {
       <div>
         <PopularFoods />
       </div>
+      <ToastContainer />
     </div>
   );
 };

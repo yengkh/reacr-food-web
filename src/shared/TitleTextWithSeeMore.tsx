@@ -7,7 +7,7 @@ type Props = {
 
 const TitleTextWithSeeMore = ({ title }: Props) => {
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between mx-2">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -34,7 +34,7 @@ const TitleTextWithSeeMore = ({ title }: Props) => {
         variants={{
           hidden: {
             opacity: 0,
-            x: 50,
+            x: -50,
           },
           visible: {
             opacity: 1,

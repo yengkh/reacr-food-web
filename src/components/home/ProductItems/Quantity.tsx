@@ -1,24 +1,19 @@
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 
 type Props = {
   seeQuantity: boolean;
+  quantity: number;
+  removeQuntity: () => void;
+  showQuntityOption: () => void;
 };
 
-const Quantity = ({ seeQuantity }: Props) => {
-  const [quantity, setQuantity] = useState(1);
-
-  function showQuntityOption() {
-    setQuantity((prevQuantity) => prevQuantity + 1);
-  }
-
-  function removeQuntity() {
-    if (quantity > 1) {
-      setQuantity((prevQuantity) => prevQuantity - 1);
-    }
-  }
-
+const Quantity = ({
+  seeQuantity,
+  quantity,
+  removeQuntity,
+  showQuntityOption,
+}: Props) => {
   return (
     <div className={`${seeQuantity === false ? "hidden" : ""} `}>
       <button
