@@ -23,7 +23,6 @@ const HomePage = ({ theme }: Props) => {
         <PaginationPage theme={theme} />
         <div className="mx-2">
           <OurServies theme={theme} />
-          {/* <Location /> */}
           <HomeViewInfor theme={theme} />
         </div>
       </div>
