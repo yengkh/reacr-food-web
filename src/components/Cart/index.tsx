@@ -2,11 +2,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/Redux-Cart";
 import CartItem from "./CartItem";
 import { updateFoodQuantity, removeFoodFromCart } from "@/Redux-Cart/AddToCart";
-import { ToastContainer, toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EmptyProduct from "@/assets/empty-product/product-is-empty-8044872-6430781.webp";
+type Props = {
+  theme: string;
+};
 
-const Cart = () => {
+const Cart = ({ theme }: Props) => {
   const carts = useSelector((store: RootState) => store.cart.foods);
   const dispatch = useDispatch();
 
@@ -27,7 +30,9 @@ const Cart = () => {
     return (
       <div className="flex justify-center flex-col items-center w-screen h-screen">
         <img src={EmptyProduct} alt="" />
-        <p>Your cart is empty!</p>
+        <p className={theme === "light" ? "" : "text-textColorForDarkMode"}>
+          Your cart is empty!
+        </p>
       </div>
     );
   }
@@ -41,6 +46,7 @@ const Cart = () => {
             onAddQuantity={handleAddQuantity}
             onRemoveItem={handleRemoveItem}
             onRemoveQuantity={handleRemoveQuantity}
+            theme={theme}
           />
         ))}
       </div>

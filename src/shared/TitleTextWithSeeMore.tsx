@@ -3,9 +3,10 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 type Props = {
   title: string;
+  theme: string;
 };
 
-const TitleTextWithSeeMore = ({ title }: Props) => {
+const TitleTextWithSeeMore = ({ title, theme }: Props) => {
   return (
     <div className="flex justify-between mx-2">
       <motion.div
@@ -24,7 +25,13 @@ const TitleTextWithSeeMore = ({ title }: Props) => {
           },
         }}
       >
-        <span className="font-bold text-lg md:text-2xl">{title}</span>
+        <span
+          className={`${
+            theme === "light" ? "" : "text-textColorForDarkMode"
+          } font-bold text-lg md:text-2xl`}
+        >
+          {title}
+        </span>
       </motion.div>
       <motion.div
         initial="hidden"
@@ -42,7 +49,11 @@ const TitleTextWithSeeMore = ({ title }: Props) => {
           },
         }}
       >
-        <span className="hover:underline cursor-pointer">
+        <span
+          className={`${
+            theme === "light" ? "" : "text-textColorForDarkMode"
+          } hover:underline cursor-pointer`}
+        >
           <span>See more</span> <FontAwesomeIcon icon={faAngleRight} />
         </span>
       </motion.div>

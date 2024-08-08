@@ -1,8 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShop, faTruck } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+type Props = {
+  theme: string;
+};
 
-const OurServies = () => {
+const OurServies = ({ theme }: Props) => {
   return (
     <section className=" mx-auto gap-6 md:flex justify-between mt-10 mb-20">
       <motion.div
@@ -20,7 +23,11 @@ const OurServies = () => {
             x: 0,
           },
         }}
-        className="flex gap-4 md:w-1/2 py-8 bg-appBarBackgroundColor text-white px-2 mb-10 md:mb-0 rounded-md"
+        className={`${
+          theme === "light"
+            ? "bg-appBarBackgroundColor text-white"
+            : "bg-appBarBackgroundColorForDark text-textColorForDarkMode"
+        } flex gap-4 md:w-1/2 py-8  px-2 mb-10 md:mb-0 rounded-md`}
       >
         <FontAwesomeIcon icon={faTruck} style={{ fontSize: "40px" }} />
         <p>Free Delivery If Speend More Then 20$</p>
@@ -40,7 +47,11 @@ const OurServies = () => {
             x: 0,
           },
         }}
-        className="flex gap-4 md:w-1/2 py-8 bg-appBarBackgroundColor text-white px-2 rounded-md"
+        className={`${
+          theme === "light"
+            ? "bg-appBarBackgroundColor text-white"
+            : "bg-appBarBackgroundColorForDark text-textColorForDarkMode"
+        } flex gap-4 md:w-1/2 py-8 px-2 rounded-md`}
       >
         <FontAwesomeIcon icon={faShop} style={{ fontSize: "40px" }} />
         <p>Our Resterant Open 7 days a week from 7am to 10pm</p>

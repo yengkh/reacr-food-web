@@ -5,8 +5,11 @@ import {
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+type Props = {
+  theme: string;
+};
 
-const ImageCarousel = () => {
+const ImageCarousel = ({ theme }: Props) => {
   const [slide, setSlide] = useState(0);
   const nextSlide = () => {
     setSlide(slide === imageCarouselData.length - 1 ? 0 : slide + 1);
@@ -17,11 +20,17 @@ const ImageCarousel = () => {
   };
   return (
     <div className="lg:w-[90%] mx-2 flex justify-center items-center h-44 md:h-80 lg:h-96 xl:h-[480px] relative">
-      <FontAwesomeIcon
-        icon={faChevronLeft}
-        className="absolute text-white w-3 h-3 md:w-5 md:h-5 lg:w-6 lg:h-6 left-1 bg-appBarBackgroundColor p-3 rounded-full cursor-pointer"
-        onClick={previoseSlide}
-      />
+      <button type="button">
+        <FontAwesomeIcon
+          icon={faChevronLeft}
+          className={`${
+            theme === "light"
+              ? "text-white bg-appBarBackgroundColor"
+              : "text-textColorForDarkMode bg-appBarBackgroundColorForDark"
+          } absolute  w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 left-1  p-2 rounded-full cursor-pointer`}
+          onClick={previoseSlide}
+        />
+      </button>
       {imageCarouselData.map((items, index) => {
         return (
           <img
@@ -36,22 +45,34 @@ const ImageCarousel = () => {
           />
         );
       })}
-      <FontAwesomeIcon
-        icon={faChevronRight}
-        className="absolute  md:w-5 md:h-5 h-3 w-3 lg:w-6 lg:h-6 right-1 bg-appBarBackgroundColor p-3 text-white rounded-full cursor-pointer"
-        onClick={nextSlide}
-      />
+      <button type="button">
+        <FontAwesomeIcon
+          icon={faChevronRight}
+          className={`${
+            theme === "light"
+              ? "bg-appBarBackgroundColor text-white"
+              : "bg-appBarBackgroundColorForDark text-textColorForDarkMode"
+          } absolute  md:w-5 md:h-5 h-4 w-4 lg:w-6 lg:h-6 right-1  p-2  rounded-full cursor-pointer`}
+          onClick={nextSlide}
+        />
+      </button>
       <span className="absolute flex bottom-5 gap-2">
         {imageCarouselData.map((_, index) => {
           return (
             <button
               type="button"
               key={index}
-              className={
+              className={`${
                 slide === index
-                  ? "h-2 w-2 md:h-3 md:w-3 bg-white rounded-full"
-                  : "h-2 w-2 md:h-3 md:w-3 bg-appBarBackgroundColor rounded-full"
-              }
+                  ? `${
+                      theme === "light" ? "bg-white" : "bg-textColorForDarkMode"
+                    } h-2 w-2 md:h-3 md:w-3 rounded-full`
+                  : `${
+                      theme === "light"
+                        ? "bg-appBarBackgroundColor"
+                        : "bg-appBarBackgroundColorForDark"
+                    } h-2 w-2 md:h-3 md:w-3 rounded-full`
+              }`}
               onClick={() => setSlide(index)}
             />
           );

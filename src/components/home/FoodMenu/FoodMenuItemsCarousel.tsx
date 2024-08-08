@@ -1,7 +1,10 @@
 import { foodMenuItems } from "@/assets/foodmenuimagecarousel/items";
 import { Link } from "react-router-dom";
+type Props = {
+  theme: string;
+};
 
-const FoodMenuItemsCarousel = () => {
+const FoodMenuItemsCarousel = ({ theme }: Props) => {
   return (
     <div className=" mt-5 flex w-full md:h-52 h-[200px] overflow-x-scroll overflow-y-hidden">
       {foodMenuItems.map((items, index) => (
@@ -13,7 +16,11 @@ const FoodMenuItemsCarousel = () => {
                 src={items.image}
                 alt=""
               />
-              <p className="text-center">
+              <p
+                className={`${
+                  theme === "light" ? "" : "text-textColorForDarkMode"
+                } text-center`}
+              >
                 {items.name} {index + 1}
               </p>
             </div>

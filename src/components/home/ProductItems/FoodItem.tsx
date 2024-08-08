@@ -1,8 +1,11 @@
 import { popularFoodImages } from "@/assets/popularFoodImages/popularFoodImages";
 import FoodItems from "./FoodItems";
 import { motion } from "framer-motion";
+type Props = {
+  theme: string;
+};
 
-const FoodItem = () => {
+const FoodItem = ({ theme }: Props) => {
   const container = {
     hidden: {},
     visible: {
@@ -30,6 +33,7 @@ const FoodItem = () => {
             foodName={items.name}
             foodRatingStar={items.rating}
             id={items.id}
+            theme={theme}
           />
         </motion.div>
       ))}

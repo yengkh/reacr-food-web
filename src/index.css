@@ -13,6 +13,14 @@ body,
   color: #134b70;
 }
 
+#light {
+  background-color: white;
+}
+
+#dark {
+  background-color: #021526;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;

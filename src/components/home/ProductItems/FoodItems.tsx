@@ -17,6 +17,7 @@ type Props = {
   foodName: string;
   foodRatingStar: number;
   id: number;
+  theme: string;
 };
 
 const FoodItems = ({
@@ -26,6 +27,7 @@ const FoodItems = ({
   foodPrice,
   foodName,
   id,
+  theme,
 }: Props) => {
   const childVariant = {
     hidden: { opacity: 0, scale: 0.9 },
@@ -69,7 +71,13 @@ const FoodItems = ({
   return (
     <motion.div variants={childVariant}>
       <div className="w-auto whitespace-nowrap cursor-pointer">
-        <div className="relative text-[12px] w-auto md:text-sm lg:text-[14px] xl:text-[16px] h-auto flex flex-col whitespace-normal bg-itemBackgrondColor rounded-md">
+        <div
+          className={`${
+            theme === "light"
+              ? "bg-itemBackgrondColor"
+              : "bg-itemeBackgroundColorForDark"
+          } relative text-[12px] w-auto md:text-sm lg:text-[14px] xl:text-[16px] h-auto flex flex-col whitespace-normal  rounded-md`}
+        >
           <div className="flex justify-center items-center absolute w-7 h-7 right-3 top-2 bg-lineThroughtColor p-1 rounded-full text-white">
             <button type="button">
               <FontAwesomeIcon icon={faHeart} />
@@ -97,7 +105,9 @@ const FoodItems = ({
 
             <div className="p-2">
               <p className="flex justify-between font-bold">
-                <span className="text-priceColor">
+                <span
+                  className={`${theme === "light" ? "text-priceColor" : ""}`}
+                >
                   <span
                     className={`${
                       foodDiscount !== 0
@@ -119,12 +129,22 @@ const FoodItems = ({
                 <span>{foodDiscount === 0 ? "" : `${foodDiscount}% Off`}</span>
               </p>
               <Rating rating={foodRatingStar} />
-              <p className="mt-2 hover:underline line-clamp-4">{foodName}</p>
+              <p
+                className={`${
+                  theme === "light" ? "" : "text-textColorForDarkMode"
+                } mt-2 hover:underline line-clamp-4`}
+              >
+                {foodName}
+              </p>
             </div>
           </Link>
           <button
             type="button"
-            className="bg-appBarBackgroundColor py-2 mt-2 mb-5 mx-4 rounded-md font-bold"
+            className={` ${
+              theme === "light"
+                ? "bg-appBarBackgroundColor"
+                : "bg-appBarBackgroundColorForDark text-textColorForDarkMode"
+            } py-2 mt-2 mb-5 mx-4 rounded-md font-bold`}
             onClick={handleAddToCart}
           >
             Add To Card

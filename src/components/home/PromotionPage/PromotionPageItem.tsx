@@ -1,5 +1,8 @@
 import { PromotionImageItems } from "@/assets/promotionImages/promotionimageitems";
-const PromotionPageItem = () => {
+type Props = {
+  theme: string;
+};
+const PromotionPageItem = ({ theme }: Props) => {
   return (
     <div className=" mt-5 flex w-full md:h-52 lg:h-72 h-[180px] overflow-x-scroll overflow-y-hidden">
       {PromotionImageItems.map((items) => (
@@ -10,7 +13,13 @@ const PromotionPageItem = () => {
               src={items.image}
               alt=""
             />
-            <div className="absolute bottom-0 w-full flex justify-between items-center bg-appBarBackgroundColor opacity-85 rounded-b-md text-sm py-3 px-1 md:py-4">
+            <div
+              className={`${
+                theme === "ligth"
+                  ? "bg-appBarBackgroundColor"
+                  : "bg-backgrondColorForDarkModePromotionBanner"
+              } absolute bottom-0 w-full flex justify-between items-center opacity-85 rounded-b-md text-sm py-3 px-1 md:py-4`}
+            >
               <p className="text-sm whitespace-normal basis-[80%] text-white">
                 {items.description}
               </p>

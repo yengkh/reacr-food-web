@@ -1,7 +1,10 @@
 import { homePageViewInfor } from "@/assets/homePageViewInfor/homePageViewInfor";
 import { motion } from "framer-motion";
+type Props = {
+  theme: string;
+};
 
-const HomeViewInfor = () => {
+const HomeViewInfor = ({ theme }: Props) => {
   return (
     <section className="mt-10">
       {homePageViewInfor.map((items) => (
@@ -45,10 +48,20 @@ const HomeViewInfor = () => {
             }}
             className="lg:w-full"
           >
-            <p className="text-lg font-bold mt-2 lg:mt-0">
+            <p
+              className={`${
+                theme === "light" ? "" : "text-textColorForDarkMode"
+              } text-lg font-bold mt-2 lg:mt-0`}
+            >
               We serve you for the best food with test and quality
             </p>
-            <p className="text-sm mt-2 lg:mt-0 xl:mt-0">{items.description}</p>
+            <p
+              className={`${
+                theme === "light" ? "" : "text-textColorForDarkMode"
+              } text-sm mt-2 lg:mt-0 xl:mt-0`}
+            >
+              {items.description}
+            </p>
           </motion.div>
         </div>
       ))}

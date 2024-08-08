@@ -1,8 +1,11 @@
 import TitleText from "@/shared/TitleText";
 import { motion } from "framer-motion";
 import FoodItem from "./FoodItem";
+type Props = {
+  theme: string;
+};
 
-const ProductItems = () => {
+const ProductItems = ({ theme }: Props) => {
   return (
     <section className="mb-8 mt-8">
       <motion.div
@@ -21,9 +24,9 @@ const ProductItems = () => {
           },
         }}
       >
-        <TitleText title={"FIND YOUR FAVORITE FOODS"} />
+        <TitleText title={"FIND YOUR FAVORITE FOODS"} theme={theme} />
       </motion.div>
-      <FoodItem />
+      <FoodItem theme={theme} />
     </section>
   );
 };

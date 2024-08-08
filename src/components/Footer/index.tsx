@@ -1,20 +1,49 @@
 import { faFacebook, faTelegram } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+type Props = {
+  theme: string;
+};
 
-const Footer = () => {
+const Footer = ({ theme }: Props) => {
   return (
-    <section className="pb-16 pt-5 mt-5 md:pb-5 lg:pb-5 xl:pb-5 bg-appBarBackgroundColor w-full">
+    <section
+      className={`${
+        theme === "light"
+          ? "bg-appBarBackgroundColor"
+          : "bg-appBarBackgroundColorForDark"
+      } pb-16 pt-5 mt-5 md:pb-5 lg:pb-5 xl:pb-5  w-full`}
+    >
       <div className="w-5/6 text-sm mx-auto flex flex-col justify-around gap-2 items-start md:flex-row">
         <div className="basis-[30%]">
-          <p className="text-white font-bold">Logo</p>
-          <p>
+          <p
+            className={`${
+              theme === "light" ? "text-white" : "text-textColorForDarkMode"
+            } font-bold`}
+          >
+            Logo
+          </p>
+          <p
+            className={`${
+              theme === "light" ? "text-white" : "text-textColorForDarkMode"
+            }`}
+          >
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis
             dignissimos quidem omnis autem nam laboriosam.
           </p>
         </div>
-        <div className="w-[30%]">
-          <p className="text-white font-bold">Links</p>
-          <div>
+        <div className=" md:w-[30%]">
+          <p
+            className={`${
+              theme === "light" ? "text-white" : "text-textColorForDarkMode"
+            } font-bold`}
+          >
+            Links
+          </p>
+          <div
+            className={`${
+              theme === "light" ? "text-white" : "text-textColorForDarkMode"
+            }`}
+          >
             <p className="hover:underline hover:cursor-pointer">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>
@@ -27,8 +56,18 @@ const Footer = () => {
           </div>
         </div>
         <div className="mb-2">
-          <p className=" font-bold text-white">Contact Us</p>
-          <div className="flex gap-2 my-2 flex-col items-start">
+          <p
+            className={`${
+              theme === "light" ? "text-white" : "text-textColorForDarkMode"
+            } font-bold`}
+          >
+            Contact Us
+          </p>
+          <div
+            className={`${
+              theme === "light" ? "text-white" : "text-textColorForDarkMode"
+            } flex gap-2 my-2 flex-col items-start`}
+          >
             <div className="flex justify-center items-center gap-3 cursor-pointer">
               <FontAwesomeIcon
                 icon={faFacebook}
@@ -45,7 +84,13 @@ const Footer = () => {
               <p className="hover:underline">Telegram</p>
             </div>
           </div>
-          <p>(+855) 123456789</p>
+          <p
+            className={`${
+              theme === "light" ? "text-white" : "text-textColorForDarkMode"
+            }`}
+          >
+            (+855) 123456789
+          </p>
         </div>
       </div>
     </section>

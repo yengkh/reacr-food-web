@@ -17,6 +17,7 @@ type Props = {
   rating: number;
   name: string;
   id: number;
+  theme: string;
 };
 
 const PopularFoodItems = ({
@@ -26,6 +27,7 @@ const PopularFoodItems = ({
   name,
   rating,
   id,
+  theme,
 }: Props) => {
   const childVariant = {
     hidden: {
@@ -75,7 +77,13 @@ const PopularFoodItems = ({
       variants={childVariant}
       className="w-auto whitespace-nowrap mb-2 cursor-pointer"
     >
-      <div className="relative text-[12px] w-44 md:w-[300px] md:text-sm lg:w-64 lg:text-md xl:text-[16px] xl:w-72 h-auto flex flex-col whitespace-normal bg-itemBackgrondColor rounded-md">
+      <div
+        className={`${
+          theme === "light"
+            ? "bg-itemBackgrondColor"
+            : "bg-itemeBackgroundColorForDark"
+        } relative text-[12px] w-44 md:w-[300px] md:text-sm lg:w-64 lg:text-md xl:text-[16px] xl:w-72 h-auto flex flex-col whitespace-normal rounded-md`}
+      >
         <div className="flex justify-center items-center absolute w-7 h-7 right-3 top-2 bg-lineThroughtColor p-1 rounded-full text-white">
           <FontAwesomeIcon icon={faHeart} />
         </div>
@@ -100,7 +108,9 @@ const PopularFoodItems = ({
           />
           <div className="p-2">
             <p className="flex justify-between font-bold">
-              <span className="text-priceColor">
+              <span
+                className={`${theme === "light" ? "text-priceColor" : ""} `}
+              >
                 <span
                   className={`${
                     discount !== 0
@@ -122,12 +132,22 @@ const PopularFoodItems = ({
               <span>{discount === 0 ? "" : `${discount}% Off`}</span>
             </p>
             <Rating rating={rating} />
-            <p className="mt-2 hover:underline line-clamp-4">{name}</p>
+            <p
+              className={`${
+                theme === "light" ? "" : "text-textColorForDarkMode"
+              } mt-2 hover:underline line-clamp-4`}
+            >
+              {name}
+            </p>
           </div>
         </Link>
         <button
           type="button"
-          className="bg-appBarBackgroundColor py-2 mt-2 mb-5 mx-4 rounded-md font-bold"
+          className={`${
+            theme === "light"
+              ? "bg-appBarBackgroundColor"
+              : "bg-appBarBackgroundColorForDark text-textColorForDarkMode"
+          }  py-2 mt-2 mb-5 mx-4 rounded-md font-bold`}
           onClick={handleAddToCart}
         >
           Add To Card

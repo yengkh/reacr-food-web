@@ -1,10 +1,17 @@
 type Props = {
   title: string;
+  theme: string;
 };
 
-const TitleText = ({ title }: Props) => {
+const TitleText = ({ title, theme }: Props) => {
   return (
-    <p className="font-bold text-lg md:text-2xl mx-2 uppercase">{title}</p>
+    <p
+      className={`${
+        theme === "light" ? "" : "text-textColorForDarkMode"
+      } font-bold text-lg md:text-2xl mx-2 uppercase`}
+    >
+      {title}
+    </p>
   );
 };
 

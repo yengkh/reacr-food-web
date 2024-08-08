@@ -5,8 +5,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import FoodItem from "../home/ProductItems/FoodItem";
 import { motion } from "framer-motion";
 import PaginationPage from "../home/PaginationPage";
+type Props = {
+  theme: string;
+};
 
-const FoodMenuDetail = () => {
+const FoodMenuDetail = ({ theme }: Props) => {
   const { foodMenuName } = useParams<{ foodMenuName: string }>();
   const [foodMenu, setFoodMenu] = useState<Array<FoodMenuType>>([]);
   const navigate = useNavigate();
@@ -54,19 +57,27 @@ const FoodMenuDetail = () => {
             <img
               src={items.image}
               alt="main image"
-              className="w-full lg:w-[70%] md:w-5/6 mx-auto h-full object-cover"
+              className="w-full lg:w-[70%] md:w-5/6 mx-auto h-full object-cover rounded-md"
             />
           </motion.div>
-          <p className="mt-5 text-2xl font-bold">
+          <p
+            className={`${
+              theme === "light" ? "" : "text-textColorForDarkMode"
+            } mt-5 text-2xl font-bold`}
+          >
             All foods relate to {items.name}
           </p>
-          <p className="text-sm">
+          <p
+            className={`${
+              theme === "light" ? "" : "text-textColorForDarkMode"
+            } text-sm`}
+          >
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga aut
             eligendi dolorem culpa autem id odit magni reiciendis explicabo
             quis.
           </p>
-          <FoodItem />
-          <PaginationPage />
+          <FoodItem theme={theme} />
+          <PaginationPage theme={theme} />
         </div>
       ))}
     </div>
