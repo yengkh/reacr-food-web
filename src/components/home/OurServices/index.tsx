@@ -1,11 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShop, faTruck } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 type Props = {
   theme: string;
 };
 
 const OurServies = ({ theme }: Props) => {
+  const { t } = useTranslation();
   return (
     <section className=" mx-auto gap-6 md:flex justify-between mt-10 mb-20">
       <motion.div
@@ -30,7 +32,7 @@ const OurServies = ({ theme }: Props) => {
         } flex gap-4 md:w-1/2 py-8  px-2 mb-10 md:mb-0 rounded-md`}
       >
         <FontAwesomeIcon icon={faTruck} style={{ fontSize: "40px" }} />
-        <p>Free Delivery If Speend More Then 20$</p>
+        <p>{t("free_delivery")}</p>
       </motion.div>
       <motion.div
         initial="hidden"
@@ -54,7 +56,7 @@ const OurServies = ({ theme }: Props) => {
         } flex gap-4 md:w-1/2 py-8 px-2 rounded-md`}
       >
         <FontAwesomeIcon icon={faShop} style={{ fontSize: "40px" }} />
-        <p>Our Resterant Open 7 days a week from 7am to 10pm</p>
+        <p>{t("open_time")}</p>
       </motion.div>
     </section>
   );

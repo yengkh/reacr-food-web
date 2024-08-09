@@ -9,6 +9,7 @@ import { addFoodToCart } from "@/Redux-Cart/AddToCart";
 import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   image: string;
@@ -54,11 +55,7 @@ const PopularFoodItems = ({
       })
     );
     toast.success(
-      `${
-        quantity > 1
-          ? "Foods added to cart successfully!"
-          : "Food added to cart successfully!"
-      }`
+      `${quantity > 1 ? `${t("success_added")}` : `${t("sucess_add")}`}`
     );
     // setSeeQuantity(false);
   }
@@ -72,6 +69,8 @@ const PopularFoodItems = ({
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
   }
+
+  const { t } = useTranslation();
   return (
     <motion.div
       variants={childVariant}
@@ -150,7 +149,7 @@ const PopularFoodItems = ({
           }  py-2 mt-2 mb-5 mx-4 rounded-md font-bold`}
           onClick={handleAddToCart}
         >
-          Add To Card
+          {t("add_to_cart")}
         </button>
         <ToastContainer />
       </div>

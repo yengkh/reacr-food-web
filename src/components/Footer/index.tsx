@@ -1,10 +1,12 @@
 import { faFacebook, faTelegram } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "react-i18next";
 type Props = {
   theme: string;
 };
 
 const Footer = ({ theme }: Props) => {
+  const { t } = useTranslation();
   return (
     <section
       className={`${
@@ -61,7 +63,7 @@ const Footer = ({ theme }: Props) => {
               theme === "light" ? "text-white" : "text-textColorForDarkMode"
             } font-bold`}
           >
-            Contact Us
+            {t("contact_us")}
           </p>
           <div
             className={`${

@@ -6,10 +6,11 @@ import {
   faPalette,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import English from "@/assets/flags/United_Kingdom.webp";
 import Khmer from "@/assets/flags/Flag_of_Cambodia.png";
 import China from "@/assets/flags/Flag_of_the_People's_Republic_of_China.png";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   setting: boolean;
@@ -24,9 +25,22 @@ const SettingPage = ({
   selectedTheme,
   handleThemeChange,
 }: Props) => {
-  const [selectLanguage, setSelectlanguage] = useState("english");
+  const [selectLanguage, setSelectlanguage] = useState(
+    localStorage.getItem("select_language") || "english"
+  );
+
+  useEffect(() => {
+    localStorage.setItem("select_language", selectLanguage);
+  }, [selectLanguage]);
   const handleLanguageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectlanguage(event.target.value);
+  };
+
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
   };
   return (
     <div
@@ -34,21 +48,21 @@ const SettingPage = ({
         selectedTheme === "light"
           ? "bg-appBarBackgroundColor"
           : "bg-appBarBackgroundColorForDark text-textColorForDarkMode"
-      } w-[60%] md:w-[380px]  z-20 bg-appBarBackgroundColor fixed h-[100%] top-10 right-0 pt-12`}
+      } w-[50%] md:w-[300px]  z-20 bg-appBarBackgroundColor fixed h-[100%] top-10 right-0 pt-12`}
     >
       <div className="flex justify-end pr-6">
         <button type="button" onClick={() => setSetting(false)}>
           <FontAwesomeIcon icon={faXmark} style={{ fontSize: "20px" }} />
         </button>
       </div>
-      <p className="text-center font-bold">Setting</p>
+      <p className="text-center font-bold"> {t("setting")} </p>
       {/* Theme Mode */}
       <p className="px-3 font-bold mt-5">
         {" "}
         <span>
           <FontAwesomeIcon icon={faPalette} />
         </span>{" "}
-        Theme Mode
+        {t("theme_mode")}
       </p>
       <div className="mt-3 px-3 w-5/6 mx-auto text-sm flex flex-col gap-3">
         <div className="flex justify-between items-start">
@@ -56,7 +70,7 @@ const SettingPage = ({
             <span>
               <FontAwesomeIcon icon={faSun} />
             </span>{" "}
-            Light Theme
+            {t("light_mode")}
           </label>
           <input
             type="radio"
@@ -72,7 +86,7 @@ const SettingPage = ({
             <span>
               <FontAwesomeIcon icon={faMoon} />
             </span>{" "}
-            Dark Theme
+            {t("dark_theme")}
           </label>
           <input
             type="radio"
@@ -91,7 +105,7 @@ const SettingPage = ({
         <span>
           <FontAwesomeIcon icon={faEarthAfrica} />
         </span>{" "}
-        Languages
+        {t("languages")}
       </p>
       <div className="mt-3 px-3 w-5/6 mx-auto text-sm flex flex-col gap-3">
         <div className="flex justify-between">
@@ -100,7 +114,7 @@ const SettingPage = ({
             <span>
               <img src={English} alt="" className="h-6 w-10" />
             </span>{" "}
-            English
+            {t("english")}
           </label>
           <input
             type="radio"
@@ -109,6 +123,7 @@ const SettingPage = ({
             value={"english"}
             checked={selectLanguage === "english"}
             onChange={handleLanguageChange}
+            onClick={() => changeLanguage("en")}
           />
         </div>
         <div className="flex justify-between">
@@ -117,7 +132,7 @@ const SettingPage = ({
             <span>
               <img src={Khmer} alt="" className="h-6 w-10" />
             </span>{" "}
-            Khmer
+            {t("khmer")}
           </label>
           <input
             type="radio"
@@ -126,6 +141,7 @@ const SettingPage = ({
             value={"khmer"}
             checked={selectLanguage === "khmer"}
             onChange={handleLanguageChange}
+            onClick={() => changeLanguage("km")}
           />
         </div>
         <div className="flex justify-between">
@@ -134,7 +150,7 @@ const SettingPage = ({
             <span>
               <img src={China} alt="" className="h-6 w-10" />
             </span>{" "}
-            China
+            {t("chiness")}
           </label>
           <input
             type="radio"
@@ -143,6 +159,7 @@ const SettingPage = ({
             value={"china"}
             checked={selectLanguage === "china"}
             onChange={handleLanguageChange}
+            onClick={() => changeLanguage("zh")}
           />
         </div>
       </div>

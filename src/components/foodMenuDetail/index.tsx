@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import FoodItem from "../home/ProductItems/FoodItem";
 import { motion } from "framer-motion";
 import PaginationPage from "../home/PaginationPage";
+import { useTranslation } from "react-i18next";
 type Props = {
   theme: string;
 };
@@ -13,6 +14,7 @@ const FoodMenuDetail = ({ theme }: Props) => {
   const { foodMenuName } = useParams<{ foodMenuName: string }>();
   const [foodMenu, setFoodMenu] = useState<Array<FoodMenuType>>([]);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (foodMenuName) {
@@ -65,7 +67,7 @@ const FoodMenuDetail = ({ theme }: Props) => {
               theme === "light" ? "" : "text-textColorForDarkMode"
             } mt-5 text-2xl font-bold`}
           >
-            All foods relate to {items.name}
+            {t("relate_foods")} {items.name}
           </p>
           <p
             className={`${

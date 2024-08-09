@@ -9,7 +9,7 @@ import {
   faUser,
   faGear,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SelectedPage } from "./shared/types";
 import LinkNavigation from "./components/Links";
 import Cart from "./components/Cart";
@@ -39,11 +39,19 @@ const App = () => {
     setMenu(!menu);
   }
 
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme_mode") || "light"
+  );
+
+  useEffect(() => {
+    localStorage.setItem("theme_mode", theme);
+    document.body.className = theme; // Optionally apply the theme to the body
+  }, [theme]);
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div id={theme}>

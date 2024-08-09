@@ -1,10 +1,12 @@
 import { homePageViewInfor } from "@/assets/homePageViewInfor/homePageViewInfor";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 type Props = {
   theme: string;
 };
 
 const HomeViewInfor = ({ theme }: Props) => {
+  const { t } = useTranslation();
   return (
     <section className="mt-10">
       {homePageViewInfor.map((items) => (
@@ -53,7 +55,7 @@ const HomeViewInfor = ({ theme }: Props) => {
                 theme === "light" ? "" : "text-textColorForDarkMode"
               } text-lg font-bold mt-2 lg:mt-0`}
             >
-              We serve you for the best food with test and quality
+              {t("our_service")}
             </p>
             <p
               className={`${

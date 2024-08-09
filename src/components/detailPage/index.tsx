@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { addFoodToCart } from "@/Redux-Cart/AddToCart";
+import { useTranslation } from "react-i18next";
 type Props = {
   theme: string;
 };
@@ -22,6 +23,7 @@ const DetailPage = ({ theme }: Props) => {
   const [quantity, setQuntity] = useState(1);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   useEffect(() => {
     if (foodName) {
       const decodeUrlName = decodeURIComponent(foodName);
@@ -57,11 +59,7 @@ const DetailPage = ({ theme }: Props) => {
       })
     );
     toast.success(
-      `${
-        quantity > 1
-          ? "Foods added to cart successfully!"
-          : "Food added to cart successfully!"
-      }`
+      `${quantity > 1 ? `${t("success_added")}` : `${t("sucess_add")}`}`
     );
   };
 
@@ -84,7 +82,7 @@ const DetailPage = ({ theme }: Props) => {
                 theme === "light" ? "" : "text-textColorForDarkMode"
               }`}
             >
-              Name: {item.name}
+              {item.name}
             </p>
             <p className="flex justify-between font-bold w-48">
               <span className="text-priceColor">
@@ -161,7 +159,7 @@ const DetailPage = ({ theme }: Props) => {
                 } btn  py-2 px-3 rounded-md font-bold text-sm`}
               >
                 {" "}
-                Add To Favorite{" "}
+                {t("add_to_favorite")}{" "}
               </button>
               <button
                 type="button"
@@ -181,7 +179,7 @@ const DetailPage = ({ theme }: Props) => {
                 }
               >
                 {" "}
-                Add To Cart{" "}
+                {t("add_to_cart")}{" "}
               </button>
             </div>
           </div>
@@ -190,7 +188,7 @@ const DetailPage = ({ theme }: Props) => {
       <div className="mt-5">
         <div>
           <hr className="h-[2px] bg-appBarBackgroundColor mb-3" />
-          <TitleTextWithSeeMore title={"Commments"} theme={theme} />
+          <TitleTextWithSeeMore title={t("comments")} theme={theme} />
           <div className="flex flex-col gap-4 lg:w-5/6 mt-3">
             <CommentPath stars={4.5} theme={theme} />
             <CommentPath stars={3.5} theme={theme} />

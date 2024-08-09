@@ -1,6 +1,8 @@
 import { FoodItem } from "@/Redux-Cart/AddToCart";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "react-i18next";
+
 type Props = {
   data: FoodItem;
   onAddQuantity: (id: number) => void;
@@ -8,7 +10,6 @@ type Props = {
   onRemoveItem: (id: number) => void;
   theme: string;
 };
-
 const CartItem = ({
   data,
   onAddQuantity,
@@ -17,7 +18,7 @@ const CartItem = ({
   theme,
 }: Props) => {
   const totalPrice = data.price * data.quantity;
-
+  const { t } = useTranslation();
   return (
     <div
       className={`${
@@ -35,13 +36,13 @@ const CartItem = ({
       </div>
       <div className="flex flex-col gap-2 p-2 pb-5">
         <p className={theme === "light" ? "" : "text-textColorForDarkMode"}>
-          Name: {data.name}
+          {data.name}
         </p>
         <p className={theme === "light" ? "" : "text-textColorForDarkMode"}>
-          Price: ${totalPrice.toFixed(2)}
+          {t("price")}: ${totalPrice.toFixed(2)}
         </p>
         <p className={theme === "light" ? "" : "text-textColorForDarkMode"}>
-          Quantity: {data.quantity}
+          {t("quantity")}: {data.quantity}
         </p>
         <div className="flex gap-5 pl-5 pt-2">
           <button
@@ -77,7 +78,7 @@ const CartItem = ({
             } py-2 px-3 rounded-md`}
             onClick={() => onRemoveItem(data.id)}
           >
-            Remove
+            {t("remove")}
           </button>
           <button
             type="button"
@@ -87,7 +88,7 @@ const CartItem = ({
                 : "bg-appBarBackgroundColorForDark text-textColorForDarkMode"
             } py-2 px-3 rounded-md`}
           >
-            Check Out
+            {t("check_out")}
           </button>
         </div>
       </div>

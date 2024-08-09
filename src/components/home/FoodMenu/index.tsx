@@ -1,11 +1,13 @@
 import TitleText from "@/shared/TitleText";
 import { motion } from "framer-motion";
 import FoodMenuItemsCarousel from "./FoodMenuItemsCarousel";
+import { useTranslation } from "react-i18next";
 type Props = {
   theme: string;
 };
 
 const FoodMenu = ({ theme }: Props) => {
+  const { t } = useTranslation();
   return (
     <section className="mt-8">
       <motion.div
@@ -24,13 +26,13 @@ const FoodMenu = ({ theme }: Props) => {
           },
         }}
       >
-        <TitleText title="All FOODS MENU" theme={theme} />
+        <TitleText title={t("all_foods_menu")} theme={theme} />
         <p
           className={`${
             theme === "light" ? "" : "text-textColorForDarkMode"
           } mx-2`}
         >
-          All the foods you need are here{" "}
+          {t("all_the_foods_you_need_are_here")}{" "}
         </p>
       </motion.div>
       <FoodMenuItemsCarousel theme={theme} />

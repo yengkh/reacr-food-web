@@ -9,6 +9,7 @@ import { addFoodToCart } from "@/Redux-Cart/AddToCart";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   imageSource: string;
@@ -48,11 +49,7 @@ const FoodItems = ({
       })
     );
     toast.success(
-      `${
-        quantity > 1
-          ? "Foods added to cart successfully!"
-          : "Food added to cart successfully!"
-      }`
+      `${quantity > 1 ? `${t("success_added")}` : `${"sucess_add"}`}`
     );
   }
 
@@ -68,6 +65,7 @@ const FoodItems = ({
     }
   }
 
+  const { t } = useTranslation();
   return (
     <motion.div variants={childVariant}>
       <div className="w-auto whitespace-nowrap cursor-pointer">
@@ -147,7 +145,7 @@ const FoodItems = ({
             } py-2 mt-2 mb-5 mx-4 rounded-md font-bold`}
             onClick={handleAddToCart}
           >
-            Add To Card
+            {t("add_to_cart")}
           </button>
           <ToastContainer />
         </div>

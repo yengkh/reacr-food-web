@@ -1,11 +1,13 @@
 import TitleText from "@/shared/TitleText";
 import { motion } from "framer-motion";
 import FoodItem from "./FoodItem";
+import { useTranslation } from "react-i18next";
 type Props = {
   theme: string;
 };
 
 const ProductItems = ({ theme }: Props) => {
+  const { t } = useTranslation();
   return (
     <section className="mb-8 mt-8">
       <motion.div
@@ -24,7 +26,7 @@ const ProductItems = ({ theme }: Props) => {
           },
         }}
       >
-        <TitleText title={"FIND YOUR FAVORITE FOODS"} theme={theme} />
+        <TitleText title={t("find_more_foods")} theme={theme} />
       </motion.div>
       <FoodItem theme={theme} />
     </section>

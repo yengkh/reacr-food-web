@@ -1,8 +1,10 @@
 import { PromotionImageItems } from "@/assets/promotionImages/promotionimageitems";
+import { useTranslation } from "react-i18next";
 type Props = {
   theme: string;
 };
 const PromotionPageItem = ({ theme }: Props) => {
+  const { t } = useTranslation();
   return (
     <div className=" mt-5 flex w-full md:h-52 lg:h-72 h-[180px] overflow-x-scroll overflow-y-hidden">
       {PromotionImageItems.map((items) => (
@@ -24,7 +26,7 @@ const PromotionPageItem = ({ theme }: Props) => {
                 {items.description}
               </p>
               <button type="button" className="bg-white rounded-md px-2 py-1">
-                See More
+                {t("see_more")}
               </button>
             </div>
           </div>

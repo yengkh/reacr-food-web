@@ -1,12 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 type Props = {
   title: string;
   theme: string;
 };
 
 const TitleTextWithSeeMore = ({ title, theme }: Props) => {
+  const { t } = useTranslation();
   return (
     <div className="flex justify-between mx-2">
       <motion.div
@@ -54,7 +56,7 @@ const TitleTextWithSeeMore = ({ title, theme }: Props) => {
             theme === "light" ? "" : "text-textColorForDarkMode"
           } hover:underline cursor-pointer`}
         >
-          <span>See more</span> <FontAwesomeIcon icon={faAngleRight} />
+          <span> {t("see_more")}</span> <FontAwesomeIcon icon={faAngleRight} />
         </span>
       </motion.div>
     </div>

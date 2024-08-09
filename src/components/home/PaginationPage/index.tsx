@@ -1,8 +1,10 @@
+import { useTranslation } from "react-i18next";
 type Props = {
   theme: string;
 };
 
 export default function PaginationPage({ theme }: Props) {
+  const { t } = useTranslation();
   return (
     <div
       className={`${
@@ -18,7 +20,7 @@ export default function PaginationPage({ theme }: Props) {
               : "bg-appBarBackgroundColorForDark text-textColorForDarkMode"
           } relative inline-flex items-center rounded-md border   px-4 py-2 text-sm font-medium  border-gray-300`}
         >
-          Previous
+          {t("previous")}
         </a>
         <a
           href="#"
@@ -28,7 +30,7 @@ export default function PaginationPage({ theme }: Props) {
               : "bg-appBarBackgroundColorForDark text-textColorForDarkMode"
           } relative ml-3 inline-flex items-center rounded-md border border-gray-300  px-4 py-2 text-sm font-medium text-gray-700 `}
         >
-          Next
+          {t("next")}
         </a>
       </div>
     </div>

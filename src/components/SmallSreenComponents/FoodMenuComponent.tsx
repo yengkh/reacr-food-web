@@ -2,6 +2,7 @@ import { foodMenuItems } from "@/assets/foodmenuimagecarousel/items";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   menu: boolean;
@@ -10,6 +11,7 @@ type Props = {
 };
 
 const FoodMenuComponent = ({ menu, setMenu, theme }: Props) => {
+  const { t } = useTranslation();
   return (
     <div
       className={`${menu === false ? "hidden" : ""} ${
@@ -23,7 +25,7 @@ const FoodMenuComponent = ({ menu, setMenu, theme }: Props) => {
           <FontAwesomeIcon icon={faXmark} style={{ fontSize: "20px" }} />
         </button>
       </div>
-      <p className="text-center font-bold">Food Menu</p>
+      <p className="text-center font-bold"> {t("food_menu")} </p>
       {foodMenuItems.map((items) => (
         <Link
           to={`/food-menu/${encodeURIComponent(items.name)}`}

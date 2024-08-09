@@ -5,11 +5,13 @@ import { updateFoodQuantity, removeFoodFromCart } from "@/Redux-Cart/AddToCart";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EmptyProduct from "@/assets/empty-product/product-is-empty-8044872-6430781.webp";
+import { useTranslation } from "react-i18next";
 type Props = {
   theme: string;
 };
 
 const Cart = ({ theme }: Props) => {
+  const { t } = useTranslation();
   const carts = useSelector((store: RootState) => store.cart.foods);
   const dispatch = useDispatch();
 
@@ -23,7 +25,7 @@ const Cart = ({ theme }: Props) => {
 
   const handleRemoveItem = (id: number) => {
     dispatch(removeFoodFromCart(id));
-    toast.success("Food removed successfully from cart!");
+    toast.success(t("remove_success_fully"));
   };
 
   if (carts.length === 0) {
@@ -31,13 +33,13 @@ const Cart = ({ theme }: Props) => {
       <div className="flex justify-center flex-col items-center w-screen h-screen">
         <img src={EmptyProduct} alt="" />
         <p className={theme === "light" ? "" : "text-textColorForDarkMode"}>
-          Your cart is empty!
+          {t("emty_cart")}
         </p>
       </div>
     );
   }
   return (
-    <div className="md:py-16 pt-5 pb-20">
+    <div className="md:py-16 pt-5 pb-20 w-screen h-screen">
       <div className="w-5/6 mx-auto mt-14 text-sm lg:w-1/2">
         {carts.map((items, key) => (
           <CartItem
