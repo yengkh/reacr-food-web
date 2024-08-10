@@ -23,6 +23,7 @@ import SettingPage from "./components/SmallSreenComponents/SettingPage";
 import FoodMenuComponent from "./components/SmallSreenComponents/FoodMenuComponent";
 import ThemeContext from "./Providers/ThemeProvider";
 import BottomAppBar from "./components/SmallSreenComponents/BottomAppBar";
+import SignUp from "./components/Profile/SignUp";
 
 const App = () => {
   const [selectePage, setSelectedpage] = useState<SelectedPage>(
@@ -61,7 +62,7 @@ const App = () => {
               theme === "light"
                 ? "bg-appBarBackgroundColor"
                 : "bg-appBarBackgroundColorForDark text-textColorForDarkMode"
-            }  w-full  fixed top-0 left-0 right-0 z-50`}
+            }  w-full fixed top-0 left-0 right-0 z-50`}
           >
             <div className="flex w-5/6 mx-auto py-5 justify-between items-center">
               <div>
@@ -95,7 +96,7 @@ const App = () => {
                   <div>
                     <LinkNavigation
                       changePage={() => setSelectedpage(SelectedPage.Profile)}
-                      linkTitle={"login"}
+                      linkTitle={"log-in"}
                       linkName={SelectedPage.Profile}
                       linkIcon={faUser}
                       checkActiveLink={selectePage === SelectedPage.Profile}
@@ -130,9 +131,10 @@ const App = () => {
           )}
           <Routes>
             <Route path="/" element={<HomePage theme={theme} />} />
-            <Route path="favorite" element={<Favorite />} />
-            <Route path="cart" element={<Cart theme={theme} />} />
-            <Route path="login" element={<Profile />} />
+            <Route path="/favorite" element={<Favorite theme={theme} />} />
+            <Route path="/cart" element={<Cart theme={theme} />} />
+            <Route path="/log-in" element={<Profile theme={theme} />} />
+            <Route path="/sign-up" element={<SignUp theme={theme} />} />
             <Route
               path="/view-food-detail/:foodName"
               element={<DetailPage theme={theme} />}

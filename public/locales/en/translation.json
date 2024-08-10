@@ -36,5 +36,18 @@
   "quantity": "Quantity",
   "sucess_add": "Food added to cart successfully!",
   "success_added": "Foods added to cart successfully!",
-  "remove_success_fully": "Food removed successfully from cart!"
+  "remove_success_fully": "Food removed successfully from cart!",
+  "login_title": "Log in with your Account",
+  "user_name": "User Name",
+  "email": "Email",
+  "password": "Password",
+  "forgot_password": "Forgot password?",
+  "log_in": "LOG IN",
+  "donnot_have_account": "Don't have an account?",
+  "sign_up": "Sign Up",
+  "sign_up_with_new_account": "Sign Up with new Account",
+  "confirm_password": "Confirm Password",
+  "Sign_Up": "SIGN UP",
+  "have_account": "Have an account?",
+  "log_In": "Log In"
 }

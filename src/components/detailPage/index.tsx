@@ -1,7 +1,7 @@
 import { popularFoodImages } from "@/assets/popularFoodImages/popularFoodImages";
 import { PopularFoodItemsType } from "@/shared/types";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Rating from "../home/PopularFoods/RatingStar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -37,6 +37,13 @@ const DetailPage = ({ theme }: Props) => {
       }
     }
   }, [foodName, navigate]);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+  }, [location]);
 
   if (detail.length === 0) {
     return <div className="flex justify-center items-center">Loading...</div>;

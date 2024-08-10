@@ -60,7 +60,7 @@ const BottomAppBar = ({
         <FontAwesomeIcon icon={faShoppingBasket} />
       </Link>
       <Link
-        to={"login"}
+        to={"log-in"}
         className={`${
           selectePage === SelectedPage.Profile
             ? "text-textColorForDarkMode"

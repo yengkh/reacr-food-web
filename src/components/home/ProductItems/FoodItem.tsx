@@ -34,6 +34,7 @@ const FoodItem = ({ theme }: Props) => {
             foodRatingStar={items.rating}
             id={items.id}
             theme={theme}
+            rating={items.rating}
           />
         </motion.div>
       ))}

@@ -28,3 +28,20 @@ export interface FoodMenuType {
   image: string;
   name: string;
 }
+
+export interface FoodItem {
+  id: number;
+  name: string;
+  price: number;
+  quantity: number;
+  image: string;
+}
+
+export interface AddToFavoriteType {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  rating: number;
+  quantity: number;
+}

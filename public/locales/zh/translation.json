@@ -36,5 +36,18 @@
   "quantity": "数量",
   "sucess_add": "食品已成功添加到购物车！",
   "success_added": "食品已成功添加到购物车！",
-  "remove_success_fully": "成功从篮子中取出食物！"
+  "remove_success_fully": "成功从篮子中取出食物！",
+  "login_title": "使用您的帐户登录",
+  "user_name": "用户名",
+  "email": "电子邮件",
+  "password": "密码",
+  "forgot_password": "忘记密码？",
+  "log_in": "登录",
+  "donnot_have_account": "没有帐户？",
+  "sign_up": "报名",
+  "sign_up_with_new_account": "使用新帐户注册",
+  "confirm_password": "确认密码",
+  "Sign_Up": "报名",
+  "have_account": "已经有帐户？",
+  "log_In": "登录"
 }

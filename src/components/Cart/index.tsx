@@ -6,15 +6,20 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EmptyProduct from "@/assets/empty-product/product-is-empty-8044872-6430781.webp";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 type Props = {
   theme: string;
 };
 
 const Cart = ({ theme }: Props) => {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
   const { t } = useTranslation();
   const carts = useSelector((store: RootState) => store.cart.foods);
   const dispatch = useDispatch();
-
   const handleAddQuantity = (id: number) => {
     dispatch(updateFoodQuantity({ id, quantity: +1 }));
   };
@@ -30,7 +35,7 @@ const Cart = ({ theme }: Props) => {
 
   if (carts.length === 0) {
     return (
-      <div className="flex justify-center flex-col items-center w-screen h-screen">
+      <div className={`flex justify-center flex-col items-center h-screen`}>
         <img src={EmptyProduct} alt="" />
         <p className={theme === "light" ? "" : "text-textColorForDarkMode"}>
           {t("emty_cart")}
@@ -39,7 +44,7 @@ const Cart = ({ theme }: Props) => {
     );
   }
   return (
-    <div className="md:py-16 pt-5 pb-20 w-screen h-screen">
+    <div className={`min-h-screen py-12`}>
       <div className="w-5/6 mx-auto mt-14 text-sm lg:w-1/2">
         {carts.map((items, key) => (
           <CartItem

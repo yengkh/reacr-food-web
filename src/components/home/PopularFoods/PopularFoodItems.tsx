@@ -4,13 +4,13 @@ import Rating from "./RatingStar";
 import { motion } from "framer-motion";
 import Quantity from "../ProductItems/Quantity";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { addFoodToCart } from "@/Redux-Cart/AddToCart";
 import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
-
+import { addToFavorite } from "@/Redux-Cart/AddToFavorite";
 type Props = {
   image: string;
   price: number;
@@ -60,6 +60,20 @@ const PopularFoodItems = ({
     // setSeeQuantity(false);
   }
 
+  function handleAddToFavorite() {
+    dispatch(
+      addToFavorite({
+        name: name,
+        id: id,
+        price: price - (price * discount) / 100,
+        image: image,
+        rating: rating,
+        quantity: 1,
+      })
+    );
+    toast.success("Food added to favorite!");
+  }
+
   function showQuntityOption() {
     setQuantity((prevQuantity) => prevQuantity + 1);
   }
@@ -69,6 +83,7 @@ const PopularFoodItems = ({
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
   }
+  const navigate = useNavigate();
 
   const { t } = useTranslation();
   return (
@@ -83,9 +98,13 @@ const PopularFoodItems = ({
             : "bg-itemeBackgroundColorForDark"
         } relative text-[12px] w-44 md:w-[300px] md:text-sm lg:w-64 lg:text-md xl:text-[16px] xl:w-72 h-auto flex flex-col whitespace-normal rounded-md`}
       >
-        <div className="flex justify-center items-center absolute w-7 h-7 right-3 top-2 bg-lineThroughtColor p-1 rounded-full text-white">
+        <button
+          type="button"
+          className="flex justify-center items-center absolute w-7 h-7 right-3 top-2 bg-lineThroughtColor p-1 rounded-full text-white"
+          onClick={handleAddToFavorite}
+        >
           <FontAwesomeIcon icon={faHeart} />
-        </div>
+        </button>
         <button
           onClick={() => setSeeQuantity(true)}
           type="button"
@@ -99,7 +118,11 @@ const PopularFoodItems = ({
           removeQuntity={removeQuntity}
           showQuntityOption={showQuntityOption}
         />
-        <Link to={`/view-food-detail/${encodeURIComponent(name)}`}>
+        <div
+          onClick={() =>
+            navigate(`/view-food-detail/${encodeURIComponent(name)}`)
+          }
+        >
           <img
             src={image}
             alt=""
@@ -139,7 +162,7 @@ const PopularFoodItems = ({
               {name}
             </p>
           </div>
-        </Link>
+        </div>
         <button
           type="button"
           className={`${

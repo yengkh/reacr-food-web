@@ -1,12 +1,5 @@
+import { FoodItem } from "@/shared/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-export interface FoodItem {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-  image: string;
-}
 
 export interface CartState {
   foods: FoodItem[];
@@ -27,16 +20,6 @@ const cartSlice = createSlice({
       state.foods = state.foods.filter((food) => food.id !== action.payload);
     },
 
-    changeFoodQumatity(state, action) {
-      const { foodId, quantity } = action.payload;
-      const indexFoodId = state.foods.findIndex((item) => item.id === foodId);
-      if (quantity > 0) {
-        state.foods[indexFoodId].quantity = quantity;
-      } else {
-        // delete state.foods[indexFoodId];
-        state.foods = state.foods.filter((item) => item.id !== foodId);
-      }
-    },
     updateFoodQuantity(
       state,
       action: PayloadAction<{ id: number; quantity: number }>
@@ -54,10 +37,6 @@ const cartSlice = createSlice({
   },
 });
 
-export const {
-  addFoodToCart,
-  removeFoodFromCart,
-  updateFoodQuantity,
-  changeFoodQumatity,
-} = cartSlice.actions;
+export const { addFoodToCart, removeFoodFromCart, updateFoodQuantity } =
+  cartSlice.actions;
 export default cartSlice.reducer;

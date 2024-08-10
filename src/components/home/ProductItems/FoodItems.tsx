@@ -6,10 +6,11 @@ import { useState } from "react";
 import Quantity from "./Quantity";
 import { useDispatch } from "react-redux";
 import { addFoodToCart } from "@/Redux-Cart/AddToCart";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from "react-i18next";
+import { addToFavorite } from "@/Redux-Cart/AddToFavorite";
 
 type Props = {
   imageSource: string;
@@ -19,6 +20,7 @@ type Props = {
   foodRatingStar: number;
   id: number;
   theme: string;
+  rating: number;
 };
 
 const FoodItems = ({
@@ -29,6 +31,7 @@ const FoodItems = ({
   foodName,
   id,
   theme,
+  rating,
 }: Props) => {
   const childVariant = {
     hidden: { opacity: 0, scale: 0.9 },
@@ -65,7 +68,22 @@ const FoodItems = ({
     }
   }
 
+  const handleAddFoodToFavorite = () => {
+    dispatch(
+      addToFavorite({
+        id: id,
+        image: imageSource,
+        name: foodName,
+        price: foodPrice - (foodPrice * foodDiscount) / 100,
+        quantity: 1,
+        rating: rating,
+      })
+    );
+    toast.success("Food added to favorite!");
+  };
+
   const { t } = useTranslation();
+  const navigate = useNavigate();
   return (
     <motion.div variants={childVariant}>
       <div className="w-auto whitespace-nowrap cursor-pointer">
@@ -77,7 +95,7 @@ const FoodItems = ({
           } relative text-[12px] w-auto md:text-sm lg:text-[14px] xl:text-[16px] h-auto flex flex-col whitespace-normal  rounded-md`}
         >
           <div className="flex justify-center items-center absolute w-7 h-7 right-3 top-2 bg-lineThroughtColor p-1 rounded-full text-white">
-            <button type="button">
+            <button type="button" onClick={handleAddFoodToFavorite}>
               <FontAwesomeIcon icon={faHeart} />
             </button>
           </div>
@@ -94,7 +112,11 @@ const FoodItems = ({
             removeQuntity={removeQuntity}
             showQuntityOption={showQuntityOption}
           />
-          <Link to={`/view-food-detail/${encodeURIComponent(foodName)}`}>
+          <div
+            onClick={() =>
+              navigate(`/view-food-detail/${encodeURIComponent(foodName)}`)
+            }
+          >
             <img
               src={imageSource}
               alt=""
@@ -135,7 +157,7 @@ const FoodItems = ({
                 {foodName}
               </p>
             </div>
-          </Link>
+          </div>
           <button
             type="button"
             className={` ${
