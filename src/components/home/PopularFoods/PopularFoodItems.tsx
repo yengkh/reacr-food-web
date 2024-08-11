@@ -57,7 +57,6 @@ const PopularFoodItems = ({
     toast.success(
       `${quantity > 1 ? `${t("success_added")}` : `${t("sucess_add")}`}`
     );
-    // setSeeQuantity(false);
   }
 
   function handleAddToFavorite() {

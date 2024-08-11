@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { addFoodToCart } from "@/Redux-Cart/AddToCart";
 import { useTranslation } from "react-i18next";
+import { addToFavorite } from "@/Redux-Cart/AddToFavorite";
 type Props = {
   theme: string;
 };
@@ -63,6 +64,30 @@ const DetailPage = ({ theme }: Props) => {
         quantity: quantity,
         image: image,
         id: id,
+      })
+    );
+    toast.success(
+      `${quantity > 1 ? `${t("success_added")}` : `${t("sucess_add")}`}`
+    );
+  };
+
+  const handleAddToFavorite = (
+    id: number,
+    name: string,
+    price: number,
+    image: string,
+    rating: number,
+    discount: number,
+    quantity: number
+  ) => {
+    dispatch(
+      addToFavorite({
+        id: id,
+        image: image,
+        name: name,
+        price: price - (price * discount) / 100,
+        quantity: quantity,
+        rating: rating,
       })
     );
     toast.success(
@@ -164,6 +189,17 @@ const DetailPage = ({ theme }: Props) => {
                     ? "bg-appBarBackgroundColor"
                     : "bg-appBarBackgroundColorForDark text-textColorForDarkMode"
                 } btn  py-2 px-3 rounded-md font-bold text-sm`}
+                onClick={() =>
+                  handleAddToFavorite(
+                    item.id,
+                    item.name,
+                    item.price,
+                    item.image,
+                    item.rating,
+                    item.discount,
+                    quantity
+                  )
+                }
               >
                 {" "}
                 {t("add_to_favorite")}{" "}
