@@ -3,14 +3,16 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useContext } from "react";
 
 type Props = {
   menu: boolean;
   setMenu: (value: boolean) => void;
-  theme: string;
 };
+import ThemeContext from "@/Providers/ThemeProvider";
 
-const FoodMenuComponent = ({ menu, setMenu, theme }: Props) => {
+const FoodMenuComponent = ({ menu, setMenu }: Props) => {
+  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   return (
     <div

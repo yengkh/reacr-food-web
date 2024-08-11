@@ -2,11 +2,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShop, faTruck } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-type Props = {
-  theme: string;
-};
-
-const OurServies = ({ theme }: Props) => {
+import { useContext } from "react";
+import ThemeContext from "@/Providers/ThemeProvider";
+const OurServies = () => {
+  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   return (
     <section className=" mx-auto gap-6 md:flex justify-between mt-10 mb-20">

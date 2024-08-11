@@ -7,26 +7,23 @@ import PopularFoods from "./PopularFoods";
 import ProductItems from "./ProductItems";
 import ImageCarousel from "./ImageCarousel";
 import PromotionPage from "./PromotionPage";
-type Props = {
-  theme: string;
-};
 
-const HomePage = ({ theme }: Props) => {
+const HomePage = () => {
   return (
     <div>
       <div className="pt-20 md:pt-28 z-50 md:w-5/6 md:mx-auto">
-        <ImageCarousel theme={theme} />
-        <PromotionPage theme={theme} />
-        <FoodMenu theme={theme} />
-        <PopularFoods theme={theme} />
-        <ProductItems theme={theme} />
-        <PaginationPage theme={theme} />
+        <ImageCarousel />
+        <PromotionPage />
+        <FoodMenu />
+        <PopularFoods />
+        <ProductItems />
+        <PaginationPage />
         <div className="mx-2">
-          <OurServies theme={theme} />
-          <HomeViewInfor theme={theme} />
+          <OurServies />
+          <HomeViewInfor />
         </div>
       </div>
-      <Footer theme={theme} />
+      <Footer />
     </div>
   );
 };

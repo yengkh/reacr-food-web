@@ -1,15 +1,14 @@
 import { imageCarouselData } from "@/assets/carouselImages/data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ThemeContext from "@/Providers/ThemeProvider";
 import {
   faChevronRight,
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
-type Props = {
-  theme: string;
-};
+import { useContext, useState } from "react";
 
-const ImageCarousel = ({ theme }: Props) => {
+const ImageCarousel = () => {
+  const { theme } = useContext(ThemeContext);
   const [slide, setSlide] = useState(0);
   const nextSlide = () => {
     setSlide(slide === imageCarouselData.length - 1 ? 0 : slide + 1);

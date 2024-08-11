@@ -7,12 +7,11 @@ import "react-toastify/dist/ReactToastify.css";
 import EmptyProduct from "@/assets/empty-product/product-is-empty-8044872-6430781.webp";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
-type Props = {
-  theme: string;
-};
+import { useContext, useEffect } from "react";
+import ThemeContext from "@/Providers/ThemeProvider";
 
-const Cart = ({ theme }: Props) => {
+const Cart = () => {
+  const { theme } = useContext(ThemeContext);
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);

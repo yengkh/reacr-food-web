@@ -1,11 +1,11 @@
 import { homePageViewInfor } from "@/assets/homePageViewInfor/homePageViewInfor";
 import { motion } from "framer-motion";
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
-type Props = {
-  theme: string;
-};
+import ThemeContext from "@/Providers/ThemeProvider";
 
-const HomeViewInfor = ({ theme }: Props) => {
+const HomeViewInfor = () => {
+  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   return (
     <section className="mt-10">

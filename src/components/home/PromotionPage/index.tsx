@@ -1,12 +1,11 @@
 import TitleText from "@/shared/TitleText";
 import PromotionPageItem from "./PromotionPageItem";
 import { useTranslation } from "react-i18next";
+import { useContext } from "react";
+import ThemeContext from "@/Providers/ThemeProvider";
 
-type Props = {
-  theme: string;
-};
-
-const PromotionPage = ({ theme }: Props) => {
+const PromotionPage = () => {
+  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   return (
     <div className="mt-10">

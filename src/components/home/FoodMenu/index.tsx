@@ -2,11 +2,11 @@ import TitleText from "@/shared/TitleText";
 import { motion } from "framer-motion";
 import FoodMenuItemsCarousel from "./FoodMenuItemsCarousel";
 import { useTranslation } from "react-i18next";
-type Props = {
-  theme: string;
-};
+import ThemeContext from "@/Providers/ThemeProvider";
+import { useContext } from "react";
 
-const FoodMenu = ({ theme }: Props) => {
+const FoodMenu = () => {
+  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   return (
     <section className="mt-8">

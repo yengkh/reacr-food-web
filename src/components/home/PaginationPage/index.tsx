@@ -1,9 +1,10 @@
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
-type Props = {
-  theme: string;
-};
 
-export default function PaginationPage({ theme }: Props) {
+import ThemeContext from "@/Providers/ThemeProvider";
+
+export default function PaginationPage() {
+  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   return (
     <div

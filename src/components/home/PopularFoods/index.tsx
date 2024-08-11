@@ -1,11 +1,10 @@
 import TitleTextWithSeeMore from "@/shared/TitleTextWithSeeMore";
 import PopularFoodsItem from "./PopularFoodsItem";
 import { useTranslation } from "react-i18next";
-type Props = {
-  theme: string;
-};
-
-const PopularFoods = ({ theme }: Props) => {
+import { useContext } from "react";
+import ThemeContext from "@/Providers/ThemeProvider";
+const PopularFoods = () => {
+  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   return (
     <section className="pt-2 mt-8">

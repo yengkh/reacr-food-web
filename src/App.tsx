@@ -126,22 +126,22 @@ const App = () => {
                 setting={setting}
               />
               {/* Menu */}
-              <FoodMenuComponent menu={menu} setMenu={setMenu} theme={theme} />
+              <FoodMenuComponent menu={menu} setMenu={setMenu} />
             </>
           )}
           <Routes>
-            <Route path="/" element={<HomePage theme={theme} />} />
-            <Route path="/favorite" element={<Favorite theme={theme} />} />
-            <Route path="/cart" element={<Cart theme={theme} />} />
-            <Route path="/log-in" element={<Profile theme={theme} />} />
-            <Route path="/sign-up" element={<SignUp theme={theme} />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/favorite" element={<Favorite />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/log-in" element={<Profile />} />
+            <Route path="/sign-up" element={<SignUp />} />
             <Route
               path="/view-food-detail/:foodName"
-              element={<DetailPage theme={theme} />}
+              element={<DetailPage />}
             />
             <Route
               path="/food-menu/:foodMenuName"
-              element={<FoodMenuDetail theme={theme} />}
+              element={<FoodMenuDetail />}
             />
             <Route path="/page-not-found" element={<MenuErrorPage />} />
           </Routes>

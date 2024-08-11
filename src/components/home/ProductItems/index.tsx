@@ -2,11 +2,11 @@ import TitleText from "@/shared/TitleText";
 import { motion } from "framer-motion";
 import FoodItem from "./FoodItem";
 import { useTranslation } from "react-i18next";
-type Props = {
-  theme: string;
-};
+import { useContext } from "react";
+import ThemeContext from "@/Providers/ThemeProvider";
 
-const ProductItems = ({ theme }: Props) => {
+const ProductItems = () => {
+  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   return (
     <section className="mb-8 mt-8">

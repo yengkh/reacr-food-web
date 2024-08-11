@@ -1,16 +1,15 @@
 import { foodMenuItems } from "@/assets/foodmenuimagecarousel/items";
 import { FoodMenuType } from "@/shared/types";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import FoodItem from "../home/ProductItems/FoodItem";
 import { motion } from "framer-motion";
 import PaginationPage from "../home/PaginationPage";
 import { useTranslation } from "react-i18next";
-type Props = {
-  theme: string;
-};
+import ThemeContext from "@/Providers/ThemeProvider";
 
-const FoodMenuDetail = ({ theme }: Props) => {
+const FoodMenuDetail = () => {
+  const { theme } = useContext(ThemeContext);
   const { foodMenuName } = useParams<{ foodMenuName: string }>();
   const [foodMenu, setFoodMenu] = useState<Array<FoodMenuType>>([]);
   const navigate = useNavigate();
@@ -79,7 +78,7 @@ const FoodMenuDetail = ({ theme }: Props) => {
             quis.
           </p>
           <FoodItem theme={theme} />
-          <PaginationPage theme={theme} />
+          <PaginationPage />
         </div>
       ))}
     </div>

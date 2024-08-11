@@ -1,6 +1,6 @@
 import { popularFoodImages } from "@/assets/popularFoodImages/popularFoodImages";
 import { PopularFoodItemsType } from "@/shared/types";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Rating from "../home/PopularFoods/RatingStar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,11 +14,10 @@ import { useDispatch } from "react-redux";
 import { addFoodToCart } from "@/Redux-Cart/AddToCart";
 import { useTranslation } from "react-i18next";
 import { addToFavorite } from "@/Redux-Cart/AddToFavorite";
-type Props = {
-  theme: string;
-};
+import ThemeContext from "@/Providers/ThemeProvider";
 
-const DetailPage = ({ theme }: Props) => {
+const DetailPage = () => {
+  const { theme } = useContext(ThemeContext);
   const { foodName } = useParams<{ foodName: string }>();
   const [detail, setDetail] = useState<Array<PopularFoodItemsType>>([]);
   const [quantity, setQuntity] = useState(1);
@@ -240,7 +239,7 @@ const DetailPage = ({ theme }: Props) => {
         </div>
       </div>
       <div>
-        <PopularFoods theme={theme} />
+        <PopularFoods />
       </div>
       <ToastContainer />
     </div>

@@ -3,10 +3,10 @@ import EmailInputField from "../EmailInputField";
 import PasswordInputField from "../PasswordInputField";
 import UserNameInputField from "../UserNameInputField";
 import { useTranslation } from "react-i18next";
-
-type Props = { theme: string };
-
-const SignUp = ({ theme }: Props) => {
+import { useContext } from "react";
+import ThemeContext from "@/Providers/ThemeProvider";
+const SignUp = () => {
+  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   const navigate = useNavigate();
   return (

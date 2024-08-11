@@ -1,11 +1,11 @@
 import { faFacebook, faTelegram } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
-type Props = {
-  theme: string;
-};
+import ThemeContext from "@/Providers/ThemeProvider";
 
-const Footer = ({ theme }: Props) => {
+const Footer = () => {
+  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   return (
     <section
